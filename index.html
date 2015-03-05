@@ -130,9 +130,28 @@
   <script>
     var today = new Date(),
         header = document.querySelector('p'),
-        headerText = header.textContent.replace('{{today}}', today);
+        headerText = header.textContent.replace('{{today}}', today),
+        entries = document.querySelectorAll('p');
 
     header.innerHTML = headerText;
+
+    function resetTerminal() {
+      var interval = 0;
+
+      [].forEach.call(entries, function(entry, index) {
+        entry.style.opacity = 0;
+        interval += index * Math.random() * 35;
+
+        setTimeout(function() {
+          entry.style.opacity = 1;
+        }, interval);
+      });
+    }
+
+    document.addEventListener('click', resetTerminal);
+    document.addEventListener('keyup', resetTerminal);
+
+    resetTerminal();
   </script>
 
   <script>
