@@ -18,6 +18,17 @@
       line-height: 1.25;
     }
 
+    ::-moz-selection {
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      text-shadow: none;
+    }
+    ::selection {
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      text-shadow: none;
+    }
+
     a {
       color: #eee;
       padding: 5px;
@@ -44,6 +55,8 @@
     }
 
     .terminal > .terminal--input:before {
+      -webkit-user-select: none;
+      user-select: none;
       content: '[' counter(input) '] λ ';
     }
 
