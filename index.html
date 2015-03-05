@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <title>Rafael Rinaldi</title>
+
+  <style>
+    body {
+      counter-reset: input;
+      margin: 1.5em;
+      background: lavenderblush;
+      -moz-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased;
+      background: #002728;
+      line-height: 1.25;
+    }
+
+    a {
+      color: #eee;
+      padding: 5px;
+    }
+
+    a:hover {
+      background: #eee;
+      color: #002728;
+    }
+
+    .terminal {
+      float: left;
+      margin: 0;
+      padding: 0;
+      font-family: Menlo, Courier New, monospace;
+      font-size: 16px;
+      text-rendering: optimizeLegibility;
+      font-weight: bold;
+      color: #eee;
+    }
+
+    .terminal > .terminal--input {
+      counter-increment: input;
+    }
+
+    .terminal > .terminal--input:before {
+      content: '[' counter(input) '] λ ';
+    }
+
+    .terminal > .terminal--input:last-child:after {
+      -webkit-animation: blink .75s infinite;
+      -moz-animation: blink .75s infinite;
+      -o-animation: blink .75s infinite;
+      animation: blink .75s infinite;
+      width: 30px;
+      content: '|';
+      background: white;
+    }
+
+    .terminal > .terminal--output.is-console:before {
+      margin-right: 10px;
+      content: '>';
+    }
+
+    .terminal > .terminal--output.is-not-defined:before {
+      content: 'undefined';
+      color: rgba(255, 255, 255, .5);
+    }
+
+    @-webkit-keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    @-moz-keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    @-ms-keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class='terminal'>
+    <p class='terminal--header'>Last login: {{today}} on ttys000</p>
+    <p class='terminal--input'>whoami</p>
+    <p class='terminal--output'>Rafael Rinaldi – Programmer with a degree in design</p>
+    <p class='terminal--input'>find ~ -name secret-of-life | xargs cat</p>
+    <p class='terminal--output'>42</p>
+    <p class='terminal--input'>which country</p>
+    <p class='terminal--output'>/usr/bin/brazil</p>
+    <p class='terminal--input'>cat bio.txt</p>
+    <p class='terminal--output'>Pushing code at <a href='http://netshoes.com.br' title='Netshoes'>Netshoes</a>. <a href='http://sp.femug.com' title='FEMUG-SP'>FEMUG-SP</a> co-organizer. <a href='http://zofe.com.br' title='ZOFE'>ZOFE podcast</a> co-host.</p>
+    <p class='terminal--input'>cat links.txt</p>
+    <p class='terminal--output'>Old Portfolio (2009) → <a href='http://cargocollective.com/rafaelrinaldi' title='Old Portfolio (2009)'>cargocollective.com/rafaelrinaldi</a></p>
+    <p class='terminal--output'>GitHub → <a href='http://github.com/rafaelrinaldi' title='GitHub'>github.com/rafaelrinaldi</a></p>
+    <p class='terminal--output'>Twitter → <a href='http://twitter.com/rafaelrinaldi' title='Twitter'>twitter.com/rafaelrinaldi</a></p>
+    <p class='terminal--output'>Speaker Deck → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
+    <p class='terminal--output'>LinkedIn → <a href='http://linkedin.com/in/rafaelrinaldi' title='LinkedIn'>linkedin.com/in/rafaelrinaldi</a></p>
+    <p class='terminal--input'>node</p>
+    <p class='terminal--output is-console'>var sprintf = require('util').format;</p>
+    <p class='terminal--output is-not-defined'></p>
+    <p class='terminal--output is-console'>sprintf('Ping me at %@%.io', 'rafael', 'rinaldi');</p>
+    <p class='terminal--output'>(^C again to quit)</p>
+    <p class='terminal--input'></p>
+  </div>
+
+  <script>
+    var today = new Date(),
+        header = document.querySelector('p'),
+        headerText = header.textContent.replace('{{today}}', today);
+
+    header.innerHTML = headerText;
+  </script>
+</body>
+</html>
