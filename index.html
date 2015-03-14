@@ -114,9 +114,9 @@
     <p class='terminal--output'><span class='terminal--tag'>LinkedIn</span> → <a href='http://linkedin.com/in/rafaelrinaldi' title='LinkedIn'>linkedin.com/in/rafaelrinaldi</a></p>
     <p class='terminal--output'><span class='terminal--tag'>Speaker Deck</span> → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
     <p class='terminal--input'>babel-node</p>
-    <p class='terminal--output is-console'>import { format } from 'util';</p>
+    <p class='terminal--output is-console'><span style='color: orange;'>import</span> <span style='color: royalblue; font-weight: bold;'>{</span> format <span style='color: royalblue; font-weight: bold;'>}</span> from <span style='color: springgreen;'>'util'</span>;</p>
     <p class='terminal--output is-not-defined'></p>
-    <p class='terminal--output is-console'>format('Ping me at %s@%s.io', 'rafael', 'rinaldi');</p>
+    <p class='terminal--output is-console'>format(<span style='color: springgreen;'>'Ping me at %s@%s.io', 'rafael', 'rinaldi'</span>);</p>
     <p class='terminal--output is-console'></p>
     <p class='terminal--output'>(^C again to quit)</p>
     <p class='terminal--input'></p>
@@ -150,7 +150,7 @@
 
         [].forEach.call(entries, function(entry, index) {
           entry.style.opacity = 0;
-          interval += index * Math.random() * 35;
+          interval += index * Math.random() * 25;
 
           setTimeout(function() {
             entry.style.opacity = 1;
