@@ -9,25 +9,18 @@
   <style>
     body {
       counter-reset: input;
-      margin: 1.5em;
-      background: lavenderblush;
       -moz-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased;
-      background: #002728;
       line-height: 1.25;
-    }
-
-    ::-moz-selection {
-      background: rgba(255, 255, 255, .15);
       color: #fff;
-      text-shadow: none;
+      background: #002728;
+      margin-left: 1em;
     }
 
     ::selection {
       background: rgba(255, 255, 255, .15);
       color: #fff;
-      text-shadow: none;
     }
 
     a {
@@ -38,6 +31,10 @@
     a:hover {
       background: #eee;
       color: #002728;
+    }
+
+    p {
+      margin: .65em 0;
     }
 
     .terminal {
@@ -56,15 +53,10 @@
     }
 
     .terminal > .terminal--input:before {
-      -webkit-user-select: none;
-      user-select: none;
       content: '[' counter(input) '] λ ';
     }
 
     .terminal > .terminal--input:last-child:after {
-      -webkit-animation: blink .75s infinite;
-      -moz-animation: blink .75s infinite;
-      -o-animation: blink .75s infinite;
       animation: blink .75s infinite;
       width: 30px;
       content: '|';
@@ -85,16 +77,6 @@
     .terminal > .terminal--output.is-not-defined:before {
       content: 'undefined';
       color: rgba(255, 255, 255, .5);
-    }
-
-    @-webkit-keyframes blink {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-
-    @-moz-keyframes blink {
-      from { opacity: 1; }
-      to { opacity: 0; }
     }
 
     @-ms-keyframes blink {
@@ -123,45 +105,97 @@
     <p class='terminal--output'><span class='terminal--tag'>Old Portfolio (2009)</span> → <a href='http://cargocollective.com/rafaelrinaldi' title='Old Portfolio (2009)'>cargocollective.com/rafaelrinaldi</a></p>
     <p class='terminal--output'><span class='terminal--tag'>GitHub</span> → <a href='http://github.com/rafaelrinaldi' title='GitHub'>github.com/rafaelrinaldi</a></p>
     <p class='terminal--output'><span class='terminal--tag'>Twitter</span> → <a href='http://twitter.com/rafaelrinaldi' title='Twitter'>twitter.com/rafaelrinaldi</a></p>
-    <p class='terminal--output'><span class='terminal--tag'>Speaker Deck</span> → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
     <p class='terminal--output'><span class='terminal--tag'>LinkedIn</span> → <a href='http://linkedin.com/in/rafaelrinaldi' title='LinkedIn'>linkedin.com/in/rafaelrinaldi</a></p>
-    <p class='terminal--input'>node</p>
-    <p class='terminal--output is-console'>var sprintf = require('util').format;</p>
+    <p class='terminal--output'><span class='terminal--tag'>Speaker Deck</span> → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
+    <p class='terminal--input'>babel-node</p>
+    <p class='terminal--output is-console'>import { format } from 'util';</p>
     <p class='terminal--output is-not-defined'></p>
-    <p class='terminal--output is-console'>sprintf('Ping me at %s@%s.io', 'rafael', 'rinaldi');</p>
+    <p class='terminal--output is-console'>format('Ping me at %s@%s.io', 'rafael', 'rinaldi');</p>
     <p class='terminal--output is-console'></p>
     <p class='terminal--output'>(^C again to quit)</p>
     <p class='terminal--input'></p>
   </div>
 
   <script>
-    var today = new Date(),
-        header = document.querySelector('p'),
-        headerText = header.textContent.replace('{{today}}', today),
-        entries = document.querySelectorAll('p');
+    (function(context) {
+      var today = new Date(),
+          header = context.querySelector('p'),
+          headerText = header.textContent.replace('{{today}}', today),
+          entries = context.querySelectorAll('p'),
+          lastEntry = entries[entries.length - 1],
+          historyIndex = -1,
+          historyEntries = [
+            'Ah ah ah, you didn\'t say the magic word',
+            'format c://',
+            'It\'s a Unix system, I know this',
+            '¯\\_(ツ)_/¯',
+            'Who is your daddy, and what does he do?',
+            'rm -rf ~',
+            'nope',
+            'git push -f # YOLO',
+            'stahp!',
+            'ಠ_ಠ'
+          ];
 
-    header.innerHTML = headerText;
+      header.innerHTML = headerText;
 
-    function resetTerminal() {
-      var interval = 0;
+      function resetTerminal() {
+        var interval = 0;
 
-      [].forEach.call(entries, function(entry, index) {
-        entry.style.opacity = 0;
-        interval += index * Math.random() * 35;
+        [].forEach.call(entries, function(entry, index) {
+          entry.style.opacity = 0;
+          interval += index * Math.random() * 35;
 
-        setTimeout(function() {
-          entry.style.opacity = 1;
-        }, interval);
-      });
-    }
+          setTimeout(function() {
+            entry.style.opacity = 1;
+          }, interval);
+        });
 
-    if (document.attachEvent) {
-      document.attachEvent('onkeyup', resetTerminal);
-    } else if(document.addEventListener) {
-      document.addEventListener('keyup', resetTerminal);
-    }
+        resetLastHistoryEntry();
+      }
 
-    resetTerminal();
+      function nextHistoryEntry() {
+        historyIndex = historyIndex >= historyEntries.length - 1 ? 0 : ++historyIndex;
+        updateLastHistoryEntry();
+      }
+
+      function previousHistoryEntry() {
+        historyIndex = historyIndex <= 0 ? historyEntries.length - 1 : --historyIndex;
+        updateLastHistoryEntry();
+      }
+
+      function updateLastHistoryEntry() {
+        lastEntry.innerHTML = historyEntries[historyIndex] + ' ';
+      }
+
+      function resetLastHistoryEntry() {
+        historyIndex = -1;
+        lastEntry.innerHTML = '';
+      }
+
+      if (document.addEventListener) {
+        document.addEventListener('keydown', function(event) {
+          switch(event.which) {
+            case 13 :
+              resetTerminal();
+            break;
+
+            case 38 :
+              nextHistoryEntry();
+            break;
+
+            case 40 :
+              previousHistoryEntry();
+            break;
+
+            case 17 :
+            case 8 :
+              resetLastHistoryEntry();
+            break;
+          }
+        });
+      }
+    })(document);
   </script>
 
   <script>
