@@ -57,6 +57,7 @@
     }
 
     .terminal > .terminal--input:last-child:after {
+      -webkit-animation: blink .75s infinite;
       animation: blink .75s infinite;
       width: 30px;
       content: '|';
@@ -77,6 +78,11 @@
     .terminal > .terminal--output.is-not-defined:before {
       content: 'undefined';
       color: rgba(255, 255, 255, .5);
+    }
+
+    @-webkit-keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
 
     @-ms-keyframes blink {
