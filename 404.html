@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <link rel='stylesheet' href='./style.css'>
+</head>
+<body>
+  <div class='terminal'>
+    <p class='terminal--header'>Last login: {{today}} on ttys000</p>
+    <p class='terminal--input'>curl {{href}} -v</p>
+    <p class='terminal--output'>* Rebuilt URL to: {{href}}</p>
+    <p class='terminal--output'>* Hostname was NOT found in DNS cache</p>
+    <p class='terminal--output'>* Could not resolve host: {{host}}</p>
+    <p class='terminal--output'>* Closing connection 0</p>
+    <p class='terminal--output'>curl: (6) Could not resolve host: {{host}}</p>
+    <p class='terminal--input'><span class='terminal--tag'>404 error</span> The page you're looking for doesn't exist ¯\_(ツ)_/¯ </p>
+  </div>
+
+  <script>
+    (function(context) {
+
+      'use strict';
+
+      var content,
+          match,
+          substitution,
+          entries = context.querySelectorAll('p'),
+          substitutions = {
+            today: new Date(),
+            href: context.location.href,
+            host: context.location.host
+          },
+          urls = {
+            'linkedin': 'http://linkedin.com/in/rafaelrinaldi',
+            'github': 'http://github.com/rafaelrinaldi',
+            'twitter': 'http://twitter.com/rafaelrinaldi',
+            '+': 'https://plus.google.com/+RafaelRinaldi/posts',
+            'facebook': 'http://facebook.com/rafaelrinaldi'
+          };
+
+      function performSubstitutions() {
+        Array.prototype.forEach.call(entries, function(entry) {
+          content = entry.textContent;
+          substitution = (/{{(.*?)}}/gi).exec(content);
+
+          if(substitution) {
+            match = substitution[0];
+            substitution = substitutions[substitution[1]];
+            entry.innerHTML = content.replace(match, substitution);
+          }
+        });
+      }
+
+      function matchURL() {
+        var match = context.location.pathname.slice(1),
+            hasMatch = urls[match];
+
+        if(hasMatch) {
+          context.location.href = urls[match];
+        } else {
+          performSubstitutions();
+        }
+      }
+
+      matchURL();
+
+    })(document);
+  </script>
+</body>
+</html>
