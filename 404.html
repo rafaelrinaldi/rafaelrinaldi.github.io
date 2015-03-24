@@ -4,7 +4,7 @@
   <meta charset='UTF-8'>
   <link rel='stylesheet' href='./style.css'>
 </head>
-<body>
+<body style='visibility: hidden;'>
   <div class='terminal'>
     <p class='terminal--header'>Last login: {{today}} on ttys000</p>
     <p class='terminal--input'>curl {{href}} -v</p>
@@ -24,6 +24,7 @@
       var content,
           match,
           substitution,
+          body = context.querySelector('body'),
           entries = context.querySelectorAll('p'),
           substitutions = {
             today: new Date(),
@@ -51,6 +52,10 @@
         });
       }
 
+      function showBody() {
+        body.style.visibility = 'visible';
+      }
+
       function matchURL() {
         var match = context.location.pathname.slice(1),
             hasMatch = urls[match];
@@ -58,6 +63,7 @@
         if(hasMatch) {
           context.location.href = urls[match];
         } else {
+          showBody();
           performSubstitutions();
         }
       }
