@@ -4,84 +4,88 @@ body {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   line-height: 1.25;
-  color: #fff;
-  background: #002728;
+  background: #FDF7E7;
   margin-left: 1em;
+  font-family: Menlo, Monaco, Lucida Console, Courier New, monospace, serif;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  font-weight: bold;
+  color: #70868E;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, .15);
-  color: #fff;
+  background: #93A1A1;
+  color: #FDF7E7;
+  padding: 5px;
 }
 
 a {
-  color: #eee;
+  color: #2C96D8;
   padding: 5px;
 }
 
 a:hover {
-  background: #eee;
-  color: #002728;
+  background: #2C96D8;
+  color: #FDF7E7;
 }
 
 p {
-  margin: .65em 0;
+  position: relative;
+  margin: 1.25px 0;
+  padding: 5px 0;
+}
+
+p:hover {
+  background: #F0EBDA;
 }
 
 .terminal {
+  overflow: hidden;
   float: left;
+  width: 100%;
   margin: 0;
   padding: 0;
-  font-family: Menlo, Courier New, monospace;
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  font-weight: bold;
-  color: #eee;
 }
 
-.terminal > .terminal--input {
-  counter-increment: input;
+.terminal--input::before {
+  content: '❯ ';
+  text-shadow: 2px 0px;
+  color: #90A300;
 }
 
-.terminal > .terminal--input:before {
-  content: '[' counter(input) '] λ ';
-}
-
-.terminal > .terminal--input:last-child:after {
-  -webkit-animation: blink .75s infinite;
-  animation: blink .75s infinite;
+.terminal--input:last-child::after {
+  animation: blink 1s steps(2, start) infinite;
   width: 30px;
+  padding: 5px 0;
   content: '|';
-  background: white;
+  color: #708294;
+  background: #708294;
 }
 
 .terminal--tag {
-  background: #eee;
-  color: #002728;
+  background: #D83E8D;
+  color: #FDF7E7;
   padding: 5px;
 }
 
-.terminal > .terminal--output.is-console:before {
+.terminal--output.is-console:before {
   margin-right: 10px;
   content: '>';
 }
 
-.terminal > .terminal--output.is-not-defined:before {
+.terminal--output.is-not-defined:before {
   content: 'undefined';
-  color: rgba(255, 255, 255, .5);
+  color: #F0EBDA;
 }
 
 @-webkit-keyframes blink {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  to { visibility: hidden; }
 }
 
 @-ms-keyframes blink {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  to { visibility: hidden; }
 }
 
 @keyframes blink {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  to { visibility: hidden; }
 }
