@@ -57,6 +57,30 @@
 
       header.innerHTML = headerText;
 
+      function getURLParameters(url) {
+        var parameters = {};
+
+        url
+          .slice(1)
+          .split('&')
+          .forEach(function(parameter) {
+            parameter = parameter.split('=');
+            parameters[parameter[0]] = parameter[1];
+          });
+
+        return parameters;
+      }
+
+      function checkURLParameters() {
+        var parameters = getURLParameters(location.search);
+
+        if('skype' in parameters) chatOnSkype(parameters.skype);
+      }
+
+      function chatOnSkype(user) {
+        location.href = 'skype:' + user + '?chat';
+      }
+
       function resetTerminal() {
         var interval = 0;
 
@@ -113,6 +137,8 @@
           }
         });
       }
+
+      checkURLParameters();
     })(document);
   </script>
 
