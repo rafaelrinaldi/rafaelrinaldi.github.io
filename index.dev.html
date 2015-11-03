@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <title>~/dev/rafaelrinaldi — fish</title>
+
+  <!--
+    This is an actual implementation of my terminal prompt.
+    It's open source, so if you are interested go grab it:
+    https://github.com/rafaelrinaldi/pure
+
+    Color scheme:
+    http://ethanschoonover.com/solarized
+
+    Fish shell:
+    http://fishshell.com
+
+    Based on the awesome Pure ZSH prompt:
+    https://github.com/sindresorhus/pure
+  -->
+
+  <style>
+    body {
+      counter-reset: input;
+      -moz-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased;
+      line-height: 1.25;
+      background: #FDF7E7;
+      margin-left: 1em;
+      font-family: Menlo, Monaco, Lucida Console, Courier New, monospace, serif;
+      font-size: 16px;
+      text-rendering: optimizeLegibility;
+      font-weight: bold;
+      color: #70868E;
+    }
+
+    ::selection {
+      background: #93A1A1;
+      color: #FDF7E7;
+      padding: 5px;
+    }
+
+    a {
+      color: #2C96D8;
+      padding: 5px;
+    }
+
+    a:hover {
+      background: #2C96D8;
+      color: #FDF7E7;
+    }
+
+    p {
+      position: relative;
+      margin: 1.25px 0;
+      padding: 5px 0;
+    }
+
+    p:hover {
+      background: #F0EBDA;
+    }
+
+    .terminal {
+      overflow: hidden;
+      float: left;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .terminal--input::before {
+      content: '❯ ';
+      text-shadow: 2px 0px;
+      color: #90A300;
+    }
+
+    .terminal--input:last-child::after {
+      animation: blink 1s steps(2, start) infinite;
+      width: 30px;
+      padding: 5px 0;
+      content: '|';
+      color: #708294;
+      background: #708294;
+    }
+
+    .terminal--tag {
+      background: #D83E8D;
+      color: #FDF7E7;
+      padding: 5px;
+    }
+
+    .terminal--output.is-console:before {
+      margin-right: 10px;
+      content: '>';
+    }
+
+    .terminal--output.is-not-defined:before {
+      content: 'undefined';
+      color: #F0EBDA;
+    }
+
+    @-webkit-keyframes blink {
+      to { visibility: hidden; }
+    }
+
+    @-ms-keyframes blink {
+      to { visibility: hidden; }
+    }
+
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <div class='terminal'>
+    <p class='terminal--header'>Last login: {{today}} on ttys000</p>
+    <p class='terminal--input'>whoami</p>
+    <p class='terminal--output'>Rafael Rinaldi – UI Developer</p>
+    <p class='terminal--input'>set -U USER_NAME=rafaelrinaldi | echo $USER_NAME</p>
+    <p class='terminal--output'>rafaelrinaldi</p>
+    <p class='terminal--input'>whereami --format sexagesimal</p>
+    <p class='terminal--output'>23.5500° S, 46.6333° W</p>
+    <p class='terminal--input'>cat bio.txt</p>
+    <p class='terminal--output'>Pushing code at <a href='http://netshoes.com.br' title='Netshoes'>Netshoes</a> • <a href='http://sp.femug.com' title='FEMUG-SP'>FEMUG-SP</a> co-organizer • <a href='http://zofe.com.br' title='ZOFE podcast'>ZOFE podcast</a> co-host</p>
+    <p class='terminal--input'>cat links.txt</p>
+    <p class='terminal--output'><span class='terminal--tag'>Contact me</span> → <a href='https://github.com/rafaelrinaldi/contact' title='Contact me'>github.com/rafaelrinaldi/contact</a></p>
+    <p class='terminal--output'><span class='terminal--tag'>Old Portfolio (2009)</span> → <a href='http://cargocollective.com/rafaelrinaldi' title='Old Portfolio (2009)'>cargocollective.com/rafaelrinaldi</a></p>
+    <p class='terminal--output'><span class='terminal--tag'>LinkedIn</span> → <a href='http://linkedin.com/in/rafaelrinaldi' title='LinkedIn'>linkedin.com/in/rafaelrinaldi</a></p>
+    <p class='terminal--output'><span class='terminal--tag'>Speaker Deck</span> → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
+    <p class='terminal--input'>node</p>
+    <p class='terminal--output is-console'><span style='color: #E03A35;'>import</span> <span style='color: #2C96D8; font-weight: bold;'>{</span> format <span style='color: #2C96D8; font-weight: bold;'>}</span> <span style='color: #E03A35;'>from</span> <span style='color: #30ABA2;'>'util'</span><span style='color: #90A300;'>;</span></p>
+    <p class='terminal--output is-not-defined'></p>
+    <p class='terminal--output is-console'>format(<span style='color: #30ABA2;'>'Ping me at %s@%s.io', 'rafael', 'rinaldi'</span>);</p>
+    <p class='terminal--output is-console'></p>
+    <p class='terminal--output'>(^C again to quit)</p>
+    <p class='terminal--input'></p>
+  </div>
+
+  <script>
+    (function(context) {
+      'use strict';
+
+      var today = new Date(),
+          header = context.querySelector('p'),
+          headerText = header.textContent.replace('{{today}}', today),
+          entries = context.querySelectorAll('p'),
+          lastEntry = entries[entries.length - 1],
+          historyIndex = -1,
+          historyEntries = [
+            'Ah ah ah, you didn\'t say the magic word',
+            'format c://',
+            'It\'s a Unix system, I know this',
+            '¯\\_(ツ)_/¯',
+            'Who is your daddy, and what does he do?',
+            'rm -rf ~',
+            'nope',
+            'git push -f # YOLO',
+            'stahp!',
+            'ಠ_ಠ'
+          ];
+
+      header.innerHTML = headerText;
+
+      function getURLParameters(url) {
+        var parameters = {};
+
+        url
+          .slice(1)
+          .split('&')
+          .forEach(function(parameter) {
+            parameter = parameter.split('=');
+            parameters[parameter[0]] = parameter[1];
+          });
+
+        return parameters;
+      }
+
+      function checkURLParameters() {
+        var parameters = getURLParameters(location.search);
+
+        if('skype' in parameters) chatOnSkype(parameters.skype);
+      }
+
+      function chatOnSkype(user) {
+        location.href = 'skype:' + user + '?chat';
+      }
+
+      function resetTerminal() {
+        var interval = 0;
+
+        [].forEach.call(entries, function(entry, index) {
+          entry.style.opacity = 0;
+          interval += index * Math.random() * 25;
+
+          setTimeout(function() {
+            entry.style.opacity = 1;
+          }, interval);
+        });
+
+        resetLastHistoryEntry();
+      }
+
+      function nextHistoryEntry() {
+        historyIndex = historyIndex >= historyEntries.length - 1 ? 0 : ++historyIndex;
+        updateLastHistoryEntry();
+      }
+
+      function previousHistoryEntry() {
+        historyIndex = historyIndex <= 0 ? historyEntries.length - 1 : --historyIndex;
+        updateLastHistoryEntry();
+      }
+
+      function updateLastHistoryEntry() {
+        lastEntry.innerHTML = historyEntries[historyIndex] + ' ';
+      }
+
+      function resetLastHistoryEntry() {
+        historyIndex = -1;
+        lastEntry.innerHTML = '';
+      }
+
+      if (document.addEventListener) {
+        document.addEventListener('keydown', function(event) {
+          switch(event.which) {
+            case 13 :
+              resetTerminal();
+            break;
+
+            case 38 :
+              nextHistoryEntry();
+            break;
+
+            case 40 :
+              previousHistoryEntry();
+            break;
+
+            case 17 :
+            case 8 :
+              resetLastHistoryEntry();
+            break;
+          }
+        });
+      }
+
+      checkURLParameters();
+    })(document);
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-719091-13', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

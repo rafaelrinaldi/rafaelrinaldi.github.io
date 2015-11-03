@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "live-server --port=8080 --host=localhost --open=./index.dev.html",
+    "build": "htmlmin ./index.dev.html > ./index.html"
+  },
+  "devDependencies": {
+    "htmlmin": "0.0.4",
+    "live-server": "^0.8.2"
+  }
+}
