@@ -71,6 +71,14 @@
       padding: 0;
     }
 
+    .terminal--input {
+      display: block;
+      outline: 0;
+      border: 0;
+      width: 100%;
+      background: transparent;
+    }
+
     .terminal--input::before {
       content: '❯ ';
       text-shadow: 2px 0px;
@@ -125,7 +133,7 @@
     <p class='terminal--input'>whereami --format sexagesimal</p>
     <p class='terminal--output'>23.5500° S, 46.6333° W</p>
     <p class='terminal--input'>cat bio.txt</p>
-    <p class='terminal--output'>Pushing code at <a href='http://netshoes.com.br' title='Netshoes'>Netshoes</a> • <a href='http://sp.femug.com' title='FEMUG-SP'>FEMUG-SP</a> co-organizer • <a href='http://zofe.com.br' title='ZOFE podcast'>ZOFE podcast</a> co-host</p>
+    <p class='terminal--output'><a href='http://sp.femug.com' title='FEMUG-SP'>FEMUG-SP</a> co-organizer • <a href='http://zofe.com.br' title='ZOFE podcast'>ZOFE podcast</a> co-host</p>
     <p class='terminal--input'>cat links.txt</p>
     <p class='terminal--output'><span class='terminal--tag'>Contact me</span> → <a href='https://github.com/rafaelrinaldi/contact' title='Contact me'>github.com/rafaelrinaldi/contact</a></p>
     <p class='terminal--output'><span class='terminal--tag'>Old Portfolio (2009)</span> → <a href='http://cargocollective.com/rafaelrinaldi' title='Old Portfolio (2009)'>cargocollective.com/rafaelrinaldi</a></p>
@@ -137,7 +145,7 @@
     <p class='terminal--output is-console'>format(<span style='color: #30ABA2;'>'Ping me at %s@%s.io', 'rafael', 'rinaldi'</span>);</p>
     <p class='terminal--output is-console'></p>
     <p class='terminal--output'>(^C again to quit)</p>
-    <p class='terminal--input'></p>
+    <input type='text' class='terminal--input' />
   </div>
 
   <script>
