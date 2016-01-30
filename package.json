@@ -5,7 +5,7 @@
     "build": "htmlmin ./index.dev.html > ./index.html"
   },
   "devDependencies": {
-    "htmlmin": "0.0.4",
-    "live-server": "^0.8.2"
+    "htmlmin": "0.0.5",
+    "live-server": "^0.9.1"
   }
 }
