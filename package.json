@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "dev": "live-server --port=8080 --host=localhost --open=./index.dev.html",
-    "build": "htmlmin ./index.dev.html > ./index.html"
+    "build:404": "htmlmin ./404.dev.html > ./404.html",
+    "build": "npm run build:404 & htmlmin ./index.dev.html > ./index.html"
   },
   "devDependencies": {
     "htmlmin": "0.0.5",
