@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='description' content='Personal website of Rafael Rinaldi, a User Interface developer from Brazil.' />
 
   <title>~/dev/rafaelrinaldi — fish</title>
 
@@ -40,7 +41,6 @@
     ::selection {
       background: #93A1A1;
       color: #FDF7E7;
-      padding: 5px;
     }
 
     a {
@@ -59,93 +59,99 @@
       padding: 5px 0;
     }
 
-    p:hover {
+    p:not(:last-child):hover {
       background: #F0EBDA;
     }
 
-    .terminal {
+    .Terminal {
       overflow: hidden;
       float: left;
       width: 100%;
-      margin: 0;
-      padding: 0;
     }
 
-    .terminal--input {
-      display: block;
-      outline: 0;
-      border: 0;
+    .TerminalInput {
       width: 100%;
-      background: transparent;
     }
 
-    .terminal--input::before {
+    .TerminalInput::before {
       content: '❯ ';
       text-shadow: 2px 0px;
       color: #90A300;
     }
 
-    .terminal--input:last-child::after {
-      animation: blink 1s steps(2, start) infinite;
-      width: 30px;
-      padding: 5px 0;
+    .TerminalInput:last-child::after {
+      animation: fx-blink 1s steps(2, start) infinite;
+      width: 10px;
+      padding: 2.5px 0;
       content: '|';
       color: #708294;
       background: #708294;
     }
 
-    .terminal--tag {
+    .TerminalTag {
+      width: 100%;
+      display: inline-block;
       background: #D83E8D;
       color: #FDF7E7;
       padding: 5px;
+      margin-bottom: 10px;
     }
 
-    .terminal--output.is-console:before {
+    .Firula {
+      display: none;
+    }
+
+    @media screen and (min-width: 40rem) {
+      .TerminalTag {
+        width: auto;
+        display: initial;
+      }
+
+      .Firula {
+        display: inline-block;
+      }
+    }
+
+    .TerminalOutput--console::before {
       margin-right: 10px;
       content: '>';
     }
 
-    .terminal--output.is-not-defined:before {
+    .TerminalOutput--not-defined::before {
       content: 'undefined';
       color: #F0EBDA;
     }
 
-    @-webkit-keyframes blink {
+    @-webkit-keyframes fx-blink {
       to { visibility: hidden; }
     }
 
-    @-ms-keyframes blink {
+    @-ms-keyframes fx-blink {
       to { visibility: hidden; }
     }
 
-    @keyframes blink {
+    @keyframes fx-blink {
       to { visibility: hidden; }
     }
   </style>
 </head>
 <body>
-  <div class='terminal'>
-    <p class='terminal--header'>Last login: {{today}} on ttys000</p>
-    <p class='terminal--input'>whoami</p>
-    <p class='terminal--output'>Rafael Rinaldi – UI Developer</p>
-    <p class='terminal--input'>set -U USER_NAME=rafaelrinaldi | echo $USER_NAME</p>
-    <p class='terminal--output'>rafaelrinaldi</p>
-    <p class='terminal--input'>whereami --format sexagesimal</p>
-    <p class='terminal--output'>23.5500° S, 46.6333° W</p>
-    <p class='terminal--input'>cat bio.txt</p>
-    <p class='terminal--output'>Advisor at <a href='http://magnetis.com.br'>Magnetis</a> • <a href='http://sp.femug.com' title='FEMUG-SP'>FEMUG-SP</a> co-organizer • <a href='http://zofe.com.br' title='ZOFE podcast'>ZOFE podcast</a> co-host</p>
-    <p class='terminal--input'>cat links.txt</p>
-    <p class='terminal--output'><span class='terminal--tag'>Contact me</span> → <a href='https://github.com/rafaelrinaldi/contact' title='Contact me'>github.com/rafaelrinaldi/contact</a></p>
-    <p class='terminal--output'><span class='terminal--tag'>Old Portfolio (2009)</span> → <a href='http://cargocollective.com/rafaelrinaldi' title='Old Portfolio (2009)'>cargocollective.com/rafaelrinaldi</a></p>
-    <p class='terminal--output'><span class='terminal--tag'>LinkedIn</span> → <a href='http://linkedin.com/in/rafaelrinaldi' title='LinkedIn'>linkedin.com/in/rafaelrinaldi</a></p>
-    <p class='terminal--output'><span class='terminal--tag'>Speaker Deck</span> → <a href='http://speakerdeck.com/rafaelrinaldi' title='Speaker Deck'>speakerdeck.com/rafaelrinaldi</a></p>
-    <p class='terminal--input'>node</p>
-    <p class='terminal--output is-console'><span style='color: #E03A35;'>import</span>&nbsp;<span style='color: #2C96D8; font-weight: bold;'>{</span>&nbsp;format&nbsp;<span style='color: #2C96D8; font-weight: bold;'>}</span>&nbsp;<span style='color: #E03A35;'>from</span>&nbsp;<span style='color: #30ABA2;'>'util'</span><span style='color: #90A300;'>;</span></p>
-    <p class='terminal--output is-not-defined'></p>
-    <p class='terminal--output is-console'>format(<span style='color: #30ABA2;'>'Ping me at %s@%s.io', 'rafael', 'rinaldi'</span>);</p>
-    <p class='terminal--output is-console'></p>
-    <p class='terminal--output'>(^C again to quit)</p>
-    <input type='text' class='terminal--input' />
+  <div class='Terminal'>
+    <p class='TerminalHeader Firula'>Last login: {{today}} on ttys000</p>
+    <p class='TerminalInput'>whoami</p>
+    <p class='TerminalOutput'>Rafael Rinaldi – UI Developer</p>
+    <p class='TerminalInput'>whereami --format sexagesimal</p>
+    <p class='TerminalOutput'>23° 28' 23" S,46° 39' 56" W</p>
+    <p class='TerminalInput'>cat links.txt</p>
+    <p class='TerminalOutput'><span class='TerminalTag'>Contact me</span> → <a href='/ping' title='Contact me'>/ping</a></p>
+    <p class='TerminalOutput'><span class='TerminalTag'>GitHub</span> → <a href='/github' title='GitHub'>/github</a></p>
+    <p class='TerminalOutput'><span class='TerminalTag'>LinkedIn</span> → <a href='/linkedin' title='LinkedIn'>/linkedin</a></p>
+    <p class='TerminalInput'>node</p>
+    <p class='TerminalOutput--console'><span style="color: #30ABA2;" class="Firula">console</span><span class="Firula">.</span><span style="color: #90A300;" class="Firula">log</span><span class="Firula">(</span><span style="color: #30ABA2;">`Ping me at</span> <span style="color: #90A300;">${</span>name<span style="color: #90A300;">}</span><span style="color: #30ABA2;">@</span><span style="color: #90A300;">${</span>surname<span style="color: #90A300;">}</span><span style="#30ABA2;">.io`</span><span class="Firula">)</span><span style="color: #90A300;">;</span></p>
+    <p class='TerminalOutput--not-defined'></p>
+    <p class='TerminalOutput--console'></p>
+    <p class='TerminalOutput'>(To exit, press ^C again or type .exit)</p>
+    <p class='TerminalInput'></p>
   </div>
 
   <script>
@@ -159,16 +165,16 @@
           lastEntry = entries[entries.length - 1],
           historyIndex = -1,
           historyEntries = [
-            'Ah ah ah, you didn\'t say the magic word',
+            'Ah ah ah, you didn\'t say the magic word ʕ•ᴥ•ʔ',
             'format c://',
-            'It\'s a Unix system, I know this',
-            '¯\\_(ツ)_/¯',
+            'It\'s a Unix system, I know this ¯\\_(ツ)_/¯',
+            'npm install -g the-world-wide-web',
             'Who is your daddy, and what does he do?',
             'rm -rf ~',
-            'nope',
-            'git push -f # YOLO',
-            'stahp!',
-            'ಠ_ಠ'
+            'Some call me /^F[a-z\'-]+$/g, but I have many names',
+            'git push origin master --force # ( ╯°□°）╯︵ ┻━┻',
+            'echo "stahp!"',
+            'time npm i # ಠ_ಠ'
           ];
 
       header.innerHTML = headerText;
