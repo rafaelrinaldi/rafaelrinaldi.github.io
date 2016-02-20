@@ -74,6 +74,11 @@
       color: #FDF7E7;
     }
 
+    abbr {
+      cursor: help;
+      border-bottom: 1px dotted #9DABAB;
+    }
+
     p {
       position: relative;
       margin: 1.25px 0;
@@ -131,6 +136,10 @@
       .Firula {
         display: inline-block;
       }
+
+      .TerminalHeader.Firula {
+        display: block;
+      }
     }
 
     .TerminalOutput--console::before {
@@ -159,9 +168,9 @@
 <body>
   <div class='Terminal'>
     <p class='TerminalHeader Firula'>Last login: {{today}} on ttys000</p>
-    <p class='TerminalInput'>whoami</p>
+    <p class='TerminalInput'><abbr title='/usr/bin/whoami'>whoami</abbr></p>
     <p class='TerminalOutput'>Rafael Rinaldi – UI Developer</p>
-    <p class='TerminalInput'>whereami --format sexagesimal</p>
+    <p class='TerminalInput'><abbr title='npm install -g @rafaelrinaldi/whereami'>whereami</abbr> --format sexagesimal</p>
     <p class='TerminalOutput'>23° 28' 23" S,46° 39' 56" W</p>
     <p class='TerminalInput'>cat links.txt</p>
     <p class='TerminalOutput'><span class='TerminalTag'>Contact me</span> → <a href='/ping' title='Contact me'>/ping</a></p>
@@ -261,7 +270,17 @@
       }
 
       if (document.addEventListener) {
+        document.addEventListener('keyup', function(event) {
+          var key = String.fromCharCode(event.which).toLowerCase();
+          var isArrowKey = event.which === 38 || event.which === 40;
+
+          if(!isArrowKey) {
+            lastEntry.innerHTML += key;
+          }
+        });
+
         document.addEventListener('keydown', function(event) {
+          event.preventDefault();
           switch(event.which) {
             case 13 :
               resetTerminal();
