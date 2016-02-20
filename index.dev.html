@@ -280,8 +280,11 @@
         });
 
         document.addEventListener('keydown', function(event) {
-          event.preventDefault();
           switch(event.which) {
+            case 8 :
+              event.preventDefault();
+              lastEntry.innerHTML = '';
+            break;
             case 13 :
               resetTerminal();
             break;
