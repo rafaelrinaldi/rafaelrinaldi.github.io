@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/rafaelrinaldi
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://rinaldi.io
+  * I am rafaelrinaldi (https://keybase.io/rafaelrinaldi) on keybase.
+  * I have a public key ASB9mLc8y4cClbNaXYj2FQfvjk8eX_q5NY2SLxZYhsFVJgo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01207d98b73ccb870295b35a5d88f61507ef8e4f1e5ffab9358d922f165886c155260a",
+            "host": "keybase.io",
+            "kid": "01207d98b73ccb870295b35a5d88f61507ef8e4f1e5ffab9358d922f165886c155260a",
+            "uid": "c56ac3b1bc377174622a86e53c342519",
+            "username": "rafaelrinaldi"
+        },
+        "service": {
+            "hostname": "rinaldi.io",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.16"
+    },
+    "ctime": 1467314076,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1467313952,
+        "hash": "824a669a8d40c7da2f8709a5e1c627daafc2354eb002e126608e7a2c0b62ecc926469612400556519e6b2f15797c8fdcf13bd1a83bc65e1ef67308d542bf7f18",
+        "seqno": 504866
+    },
+    "prev": "5fa20970f36d23a4cc98bf63c9268741c62415f77b7e71477dac06831fb97a0b",
+    "seqno": 11,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgfZi3PMuHApWzWl2I9hUH745PHl/6uTWNki8WWIbBVSYKp3BheWxvYWTFAvd7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwN2Q5OGI3M2NjYjg3MDI5NWIzNWE1ZDg4ZjYxNTA3ZWY4ZTRmMWU1ZmZhYjkzNThkOTIyZjE2NTg4NmMxNTUyNjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwN2Q5OGI3M2NjYjg3MDI5NWIzNWE1ZDg4ZjYxNTA3ZWY4ZTRmMWU1ZmZhYjkzNThkOTIyZjE2NTg4NmMxNTUyNjBhIiwidWlkIjoiYzU2YWMzYjFiYzM3NzE3NDYyMmE4NmU1M2MzNDI1MTkiLCJ1c2VybmFtZSI6InJhZmFlbHJpbmFsZGkifSwic2VydmljZSI6eyJob3N0bmFtZSI6InJpbmFsZGkuaW8iLCJwcm90b2NvbCI6Imh0dHA6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjE2In0sImN0aW1lIjoxNDY3MzE0MDc2LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NjczMTM5NTIsImhhc2giOiI4MjRhNjY5YThkNDBjN2RhMmY4NzA5YTVlMWM2MjdkYWFmYzIzNTRlYjAwMmUxMjY2MDhlN2EyYzBiNjJlY2M5MjY0Njk2MTI0MDA1NTY1MTllNmIyZjE1Nzk3YzhmZGNmMTNiZDFhODNiYzY1ZTFlZjY3MzA4ZDU0MmJmN2YxOCIsInNlcW5vIjo1MDQ4NjZ9LCJwcmV2IjoiNWZhMjA5NzBmMzZkMjNhNGNjOThiZjYzYzkyNjg3NDFjNjI0MTVmNzdiN2U3MTQ3N2RhYzA2ODMxZmI5N2EwYiIsInNlcW5vIjoxMSwidGFnIjoic2lnbmF0dXJlIn2jc2lnxECS3yJw6DvbM4Mbv5G5flEEDpxBmhiyMBPSdBrOEpThpndIhLPx9ZvawophiUjGGMxrEgHXp0mloAjjoTgJsyACqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQguhG2DtxI4J85w11BYZxL/tNTR3Rzfid6AO7aIjOZvsqjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rafaelrinaldi
+
+==================================================================
