@@ -6,27 +6,27 @@
 
   <meta property='og:locale' content='en_US' />
   <meta property='og:type' content='website' />
-  <meta property='og:title' content='Rafael Rinaldi &ndash; UI Developer' />
-  <meta property='og:description' content='Personal website of Rafael Rinaldi, User Interface developer' />
+  <meta property='og:title' content='Rafael Rinaldi &ndash; Developer' />
+  <meta property='og:description' content='Personal website of Rafael Rinaldi, Developer' />
   <meta property='og:url' content='http://rinaldi.io' />
   <meta property='og:site_name' content='Rafael Rinaldi' />
   <meta property='og:image' content='http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200' />
 
   <meta name='twitter:card' content='summary'/>
-  <meta name='twitter:description' content='Personal website of Rafael Rinaldi, User Interface developer'/>
-  <meta name='twitter:title' content='Rafael Rinaldi &ndash; UI Developer'/>
+  <meta name='twitter:description' content='Personal website of Rafael Rinaldi, Developer'/>
+  <meta name='twitter:title' content='Rafael Rinaldi &ndash; Developer'/>
   <meta name='twitter:site' content='@rafaelrinaldi'/>
   <meta name='twitter:image' content='http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200'/>
 
-  <title>Rafael Rinaldi &ndash; UI Developer</title>
+  <title>Rafael Rinaldi &ndash; Developer</title>
 
   <!--
     This is an actual implementation of my terminal prompt.
     It's open source, so if you are interested go grab it:
     https://github.com/rafaelrinaldi/pure
 
-    Color scheme:
-    http://ethanschoonover.com/solarized
+    Color scheme is heavily inspired by PaperColor:
+    https://github.com/NLKNguyen/papercolor-theme
 
     Fish shell:
     http://fishshell.com
@@ -41,36 +41,41 @@
       -moz-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
       font-smoothing: antialiased;
-      line-height: 1.25;
-      background: #FDF7E7;
+      line-height: 1.35;
+      background: #EEE;
       margin-left: 1em;
       font-family: Menlo, Monaco, Lucida Console, Courier New, monospace, serif;
       font-size: 16px;
       text-rendering: optimizeLegibility;
       font-weight: bold;
-      color: #70868E;
+      color: #545454;
     }
 
     ::-moz-selection {
-      color: #FDF6E3;
-      background: #93A1A1;
+      color: #616161;
+      background: #E4E4E4;
       text-shadow: none;
     }
 
     ::selection {
-      color: #FDF6E3;
-      background: #93A1A1;
+      color: #616161;
+      background: #E4E4E4;
       text-shadow: none;
     }
 
     a {
-      color: #2C96D8;
+      color: #1C67BD;
       padding: 5px;
     }
 
     a:hover {
-      background: #2C96D8;
-      color: #FDF7E7;
+      background: #1C67BD;
+      color: #EEE;
+    }
+
+    abbr {
+      cursor: help;
+      border-bottom: 1px dotted #9DABAB;
     }
 
     p {
@@ -80,7 +85,7 @@
     }
 
     p:not(:last-child):hover {
-      background: #F0EBDA;
+      background: #E4E4E4;
     }
 
     .Terminal {
@@ -104,19 +109,14 @@
       width: 10px;
       padding: 2.5px 0;
       content: '|';
-      color: #708294;
-      background: #708294;
-    }
-
-    .TerminalInput--error::before {
-      color: #DC322F;
+      color: #1FBCD2;
+      background: #1FBCD2;
     }
 
     .TerminalTag {
       width: 100%;
       display: inline-block;
-      background: #D83E8D;
-      color: #FDF7E7;
+      background: #D0D0D0;
       padding: 5px;
       margin-bottom: 10px;
     }
@@ -153,15 +153,15 @@
 <body style='visibility: hidden;'>
   <div class='Terminal'>
     <p class='TerminalHeader Firula'>Last login: {{today}} on ttys000</p>
-    <p class='TerminalInput TerminalInput--error Firula'>curl {{href}} -v</p>
+    <p class='TerminalInput TerminalInput--error Firula'><span style="color: #3D77EC;">curl</span> <span style="color: #2DB6FC;">{{href}} -v</span></p>
     <p class='TerminalOutput Firula'>* Rebuilt URL to: {{href}}</p>
     <p class='TerminalOutput Firula'>* Hostname was NOT found in DNS cache</p>
     <p class='TerminalOutput Firula'>* Could not resolve host: {{host}}</p>
     <p class='TerminalOutput Firula'>* Closing connection 0</p>
     <p class='TerminalOutput Firula'>curl: (6) Could not resolve host: {{host}}</p>
-    <p class='TerminalInput'>cat links.txt</p>
+    <p class='TerminalInput'><abbr title='/bin/cat' style="color: #3D77EC;">cat</abbr> <span style="color: #2DB6FC;">links.txt</span></p>
     <p class='TerminalOutput'><span class='TerminalTag'>Go Back</span> → <a href='/' title='Go Back'>/back</a></p>
-    <p class='TerminalInput'>404</p>
+    <p class='TerminalInput' style="color: #ED5554;"><strong>404</strong></p>
   </div>
 
   <script>
@@ -194,7 +194,7 @@
 
       function performSubstitutions() {
         Array.prototype.forEach.call(entries, function(entry) {
-          content = entry.textContent;
+          content = entry.innerHTML;
           substitution = (/{{(.*?)}}/gi).exec(content);
 
           if(substitution) {
