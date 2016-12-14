@@ -38,7 +38,6 @@
 
   <style>
     body {
-      opacity: 0;
       counter-reset: input;
       -moz-font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
@@ -169,7 +168,7 @@
     }
   </style>
 </head>
-<body>
+<body hidden>
   <div class='Terminal'>
     <p class='TerminalHeader Firula'>Last login: {{today}} on ttys000</p>
     <p class='TerminalInput'><abbr title='/usr/bin/whoami' style="color: #3D77EC;">whoami</abbr></p>
@@ -310,7 +309,7 @@
       resetTerminal();
 
       // Reveal body
-      document.body.style = 'opacity: 1';
+      document.body.hidden = false;
     })(document);
   </script>
 </body>
