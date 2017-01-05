@@ -209,17 +209,18 @@
           lastEntry = entries[entries.length - 1],
           historyIndex = -1,
           historyEntries = [
+            '',
             'Ah ah ah, you didn\'t say the magic word ʕ•ᴥ•ʔ',
-            'format c://',
+            '<span style="color: #3D77EC;">format</span><span style="color: #2DB6FC;">c://</span>',
             'It\'s a Unix system, I know this ¯\\_(ツ)_/¯',
-            'npm install -g the-world-wide-web',
+            '<span style="color: #3D77EC;">npm</span><span style="color: #2DB6FC;">install -g the-world-wide-web</span>',
             'Who is your daddy, and what does he do?',
-            'vim /tmp/password.txt',
-            'rm -rf ~',
+            '<span style="color: #3D77EC;">vim</span><span style="color: #2DB6FC;">/tmp/password.txt</span>',
+            '<span style="color: #3D77EC;">rm</span><span style="color: #2DB6FC;">-rf ~</span>',
             'Some call me /^F[a-z\'-]+$/g, but I have many names',
-            'git push origin master --force # ( ╯°□°）╯︵ ┻━┻',
-            'echo "stahp!"',
-            'time npm i # ಠ_ಠ'
+            '<span style="color: #3D77EC;">git</span><span style="color: #2DB6FC;">push origin master --force</span> <span style="color: #E0E0E0"># ( ╯°□°）╯︵ ┻━┻</span>',
+            '<span style="color: #3D77EC;">echo</span><span style="color: #F4AD39;">"stahp!"</span>',
+            '<span style="color: #3D77EC;">time</span><span style="color: #2DB6FC;">npm i</span> <span style="color: #E0E0E0;"># ಠ_ಠ</span>'
           ];
 
       header.innerHTML = headerText;
@@ -248,8 +249,9 @@
         location.href = 'skype:' + user + '?chat';
       }
 
-      function resetTerminal() {
+      function resetTerminal(callback) {
         var interval = 0;
+        var totalEntries = entries.length - 1;
 
         [].forEach.call(entries, function(entry, index) {
           entry.style.opacity = 0;
@@ -257,10 +259,9 @@
 
           setTimeout(function() {
             entry.style.opacity = 1;
+            if (index === totalEntries && callback) callback();
           }, interval);
         });
-
-        resetLastHistoryEntry();
       }
 
       function nextHistoryEntry() {
@@ -282,11 +283,17 @@
         lastEntry.innerHTML = '';
       }
 
+      // Will render a random history entry once terminal is reset
+      function randomHistoryEntry() {
+        historyIndex = Math.ceil(Math.random() * historyEntries.length - 1);
+        updateLastHistoryEntry();
+      }
+
       if (document.addEventListener) {
         document.addEventListener('keydown', function(event) {
           switch(event.which) {
             case 13 :
-              resetTerminal();
+              resetTerminal(randomHistoryEntry);
             break;
 
             case 38 :
@@ -306,7 +313,7 @@
       }
 
       checkURLParameters();
-      resetTerminal();
+      resetTerminal(randomHistoryEntry);
 
       // Reveal body
       document.body.hidden = false;
