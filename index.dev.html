@@ -113,7 +113,6 @@
 
     .TerminalInput::before {
       content: '❯ ';
-      text-shadow: 2px 0px;
       color: #90A300;
     }
 
@@ -155,7 +154,7 @@
 
     .TerminalOutput--console::before {
       margin-right: 10px;
-      content: '>';
+      content: 'user=>';
     }
 
     .TerminalOutput--not-defined::before {
@@ -208,11 +207,12 @@
       <a href='https://github.com/rafaelrinaldi/whereami' target='_blank' title='Get your geolocation information using freegeoip.net'>whereami</a>
     </p>
 
-    <p class='TerminalInput'><abbr title='/usr/local/bin/node' style="color: #3D77EC;">node</abbr></p>
-    <p class='TerminalOutput--console'><span style='color: #D55F1B;' class='Firula'>console</span><span class='Firula'>.</span>log<span class='Firula' style="color: #0D61AD;">(</span><span style='color: #608616;'>`Ping me at&nbsp;</span><span style='color: #0D61AD;'>${</span>name<span style='color: #0D61AD;'>}</span><span style='color: #608616;'>@</span><span style='color: #0D61AD;'>${</span>surname<span style='color: #0D61AD;'>}</span><span style='color: #608616;'>.io`</span><span class='Firula' style="color: #0D61AD;">)</span>;</p>
-    <p class='TerminalOutput--not-defined'></p>
-    <p class='TerminalOutput--console'></p>
-    <p class='TerminalOutput'>(To exit, press ^C again or type .exit)</p>
+    <p class="TerminalInput"><abbr title='/usr/local/bin/lein' style="color: #3D77EC;">lein</abbr><span>repl</span></p>
+    <p class='TerminalOutput--console'>(str "Ping me at " config/name "@" config/surname ".io")</p>
+    <p></p>
+    <p>exit</p>
+    <p>Bye for now!</p>
+    <p></p>
     <p class='TerminalInput'></p>
   </div>
 
@@ -229,17 +229,13 @@
           lastEntry = entries[entries.length - 1],
           historyIndex = -1,
           historyEntries = [
-            '',
-            'Ah ah ah, you didn\'t say the magic word ʕ•ᴥ•ʔ',
+            '“Ah ah ah, you didn\'t say the magic word”',
             '<span style="color: #3D77EC;">format</span><span style="color: #2DB6FC;">c://</span>',
-            'It\'s a Unix system, I know this ¯\\_(ツ)_/¯',
-            '<span style="color: #3D77EC;">npm</span><span style="color: #2DB6FC;">install -g the-world-wide-web</span>',
-            '<span style="color: #3D77EC;">vim</span><span style="color: #2DB6FC;">/tmp/password.txt</span>',
+            '“It\'s a Unix system, I know this”',
+            '<span style="color: #3D77EC;">emacs</span><span style="color: #2DB6FC;">/tmp/password.txt</span>',
             '<span style="color: #3D77EC;">rm</span><span style="color: #2DB6FC;">-rf ~</span>',
             'Some call me /^F[a-z\'-]+$/g, but I have many names',
             '<span style="color: #3D77EC;">git</span><span style="color: #2DB6FC;">push origin master --force</span> <span style="color: #E0E0E0"># ( ╯°□°）╯︵ ┻━┻</span>',
-            '<span style="color: #3D77EC;">echo</span><span style="color: #F4AD39;">"stahp!"</span>',
-            '<span style="color: #3D77EC;">time</span><span style="color: #2DB6FC;">npm i</span> <span style="color: #E0E0E0;"># ಠ_ಠ</span>'
           ];
 
       header.innerHTML = headerText;
@@ -312,7 +308,7 @@
         document.addEventListener('keydown', function(event) {
           switch(event.which) {
             case 13 :
-              resetTerminal(randomHistoryEntry);
+              resetTerminal();
             break;
 
             case 38 :
@@ -332,7 +328,7 @@
       }
 
       checkURLParameters();
-      resetTerminal(randomHistoryEntry);
+      resetTerminal();
 
       // Reveal body
       document.body.hidden = false;
