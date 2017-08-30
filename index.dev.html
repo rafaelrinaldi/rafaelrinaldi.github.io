@@ -1,338 +1,99 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='description' content='Personal website of Rafael Rinaldi, Developer' />
+<html lang="en">
+    <head>
+        {metatags}
 
-  <meta property='og:locale' content='en_US' />
-  <meta property='og:type' content='website' />
-  <meta property='og:title' content='Rafael Rinaldi &ndash; Developer' />
-  <meta property='og:description' content='Personal website of Rafael Rinaldi, Developer' />
-  <meta property='og:url' content='http://rinaldi.io' />
-  <meta property='og:site_name' content='Rafael Rinaldi' />
-  <meta property='og:image' content='http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200' />
+        <title>Rafael Rinaldi</title>
 
-  <meta name='twitter:card' content='summary'/>
-  <meta name='twitter:description' content='Personal website of Rafael Rinaldi, Developer'/>
-  <meta name='twitter:title' content='Rafael Rinaldi &ndash; Developer'/>
-  <meta name='twitter:site' content='@rafaelrinaldi'/>
-  <meta name='twitter:image' content='http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200'/>
+        <style>
+        * {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
 
-  <title>Rafael Rinaldi &ndash; Developer</title>
+        ::-moz-selection {
+          background-color: #F7F7ED;
+          color: #2E2734;
+          text-shadow: none;
+        }
 
-  <!--
-    This is an actual implementation of my terminal prompt.
-    It's open source, so if you are interested go grab it:
-    https://github.com/rafaelrinaldi/pure
+        ::selection{
+          background-color: #F7F7ED;
+          color:#2E2734;
+          text-shadow: none;
+        }
 
-    Color scheme is heavily inspired by PaperColor:
-    https://github.com/NLKNguyen/papercolor-theme
+        body {
+          background-color: #FFFFFA;
+          color: #2E2734;
+          font-family: 'triplicate', Georgia, serif;
+          font-size: calc(0.7rem + 0.75vw);
+          line-height: 1.4;
+          margin: 0;
+          max-width: 100%;
+          padding: 25px;
+        }
 
-    Fish shell:
-    http://fishshell.com
-
-    Based on the awesome Pure ZSH prompt:
-    https://github.com/sindresorhus/pure
-  -->
-
-  <style>
-    body {
-      counter-reset: input;
-      -moz-font-smoothing: antialiased;
-      -webkit-font-smoothing: antialiased;
-      font-smoothing: antialiased;
-      line-height: 1.35;
-      background: #EEE;
-      margin-left: 1em;
-      font-family: 'SF Mono', Menlo, Monaco, Lucida Console, Courier New, monospace, serif;
-      font-size: 16px;
-      text-rendering: optimizeLegibility;
-      font-weight: bold;
-      color: #545454;
-    }
-
-    ::-moz-selection {
-      color: #616161;
-      background: #E4E4E4;
-      text-shadow: none;
-    }
-
-    ::selection {
-      color: #616161;
-      background: #E4E4E4;
-      text-shadow: none;
-    }
-
-    a {
-      color: #1C67BD;
-      padding: 5px;
-    }
-
-    a:not(.raw):hover {
-      background: #1C67BD;
-      color: #EEE;
-    }
-
-    .work:hover svg {
-      background-color: #F33;
-    }
-
-    .work:hover svg > path {
-      fill: #FFF;
-    }
-
-    abbr {
-      cursor: help;
-      border-bottom: 1px dotted #9DABAB;
-    }
-
-    p {
-      position: relative;
-      margin: 1.25px 0;
-      padding: 5px 0;
-    }
-
-    p:not(:last-child):hover {
-      background: #E4E4E4;
-    }
-
-    .Terminal {
-      overflow: hidden;
-      float: left;
-      width: 100%;
-    }
-
-    .TerminalInput {
-      width: 100%;
-    }
-
-    .TerminalInput > *:first-child {
-      margin-right: 0.75rem;
-    }
-
-    .TerminalInput::before {
-      content: '❯ ';
-      color: #90A300;
-    }
-
-    .TerminalInput:last-child::after {
-      animation: fx-blink 1s steps(2, start) infinite;
-      width: 10px;
-      padding: 2.5px 0;
-      content: '|';
-      color: #1FBCD2;
-      background: #1FBCD2;
-    }
-
-    .TerminalTag {
-      width: 100%;
-      display: inline-block;
-      background: #D0D0D0;
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-
-    .Firula {
-      display: none;
-    }
-
-    @media screen and (min-width: 40rem) {
-      .TerminalTag {
-        width: auto;
-        display: initial;
-      }
-
-      .Firula {
-        display: inline-block;
-      }
-
-      .TerminalHeader.Firula {
-        display: block;
-      }
-    }
-
-    .TerminalOutput--console::before {
-      margin-right: 10px;
-      content: 'user=>';
-    }
-
-    .TerminalOutput--not-defined::before {
-      content: 'undefined';
-      color: #E0E0E0;
-    }
-
-    @-webkit-keyframes fx-blink {
-      to { visibility: hidden; }
-    }
-
-    @-ms-keyframes fx-blink {
-      to { visibility: hidden; }
-    }
-
-    @keyframes fx-blink {
-      to { visibility: hidden; }
-    }
-  </style>
-</head>
-<body hidden>
-  <div class='Terminal'>
-    <p class='TerminalHeader Firula'>Last login: {{today}} on ttys000</p>
-    <p class='TerminalInput'><abbr title='/usr/bin/whoami' style="color: #3D77EC;">whoami</abbr></p>
-    <p class='TerminalOutput'>Rafael Rinaldi</p>
-    <p class='TerminalInput'><abbr title='npm install -g @rafaelrinaldi/whereami' style="color: #3D77EC;">whereami</abbr> <span style="color: #2DB6FC;">--format sexagesimal</span></p>
-    <p class='TerminalOutput'>40° 43' 17" N,74° 18" W</p>
-    <p class='TerminalInput'><abbr title='npm i imgcat -g' style="color: #3D77EC;">imgcat</abbr> <span style="color: #2DB6FC;">work.svg</span></p>
-    <p class='TerminalOutput'>
-      <a class='raw work' href='https://work.co' title='★★' target='_blank'>
-        <svg width='80' height='50'>
-          <path d="M0.010,50.009 C0.010,50.009 0.010,-0.006 0.010,-0.006 C0.010,-0.006 80.008,-0.006 80.008,-0.006 C80.008,-0.006 80.008,0.864 80.008,0.864 C80.008,0.864 80.008,50.009 80.008,50.009 C80.008,50.009 0.010,50.009 0.010,50.009 ZM77.047,2.941 C77.047,2.941 2.970,2.941 2.970,2.941 C2.970,2.941 2.970,47.061 2.970,47.061 C2.970,47.061 77.047,47.061 77.047,47.061 C77.047,47.061 77.047,2.941 77.047,2.941 ZM9.846,14.569 C10.223,12.546 10.326,12.155 10.862,10.132 C10.862,10.132 11.706,6.984 11.706,6.984 C11.706,6.984 13.968,6.984 13.968,6.984 C14.276,8.083 14.580,9.180 14.914,10.277 C15.479,12.242 15.581,12.561 15.901,14.538 C16.207,12.517 16.279,12.170 16.743,10.089 C16.962,9.051 17.195,8.010 17.412,6.984 C17.412,6.984 19.955,6.984 19.955,6.984 C19.955,6.984 17.352,17.183 17.352,17.183 C17.352,17.183 14.712,17.183 14.712,17.183 C14.392,16.056 14.086,14.931 13.752,13.816 C13.200,11.938 13.171,11.867 12.867,10.436 C12.605,11.692 12.577,11.794 11.996,13.745 C11.996,13.745 11.007,17.183 11.007,17.183 C11.007,17.183 8.367,17.183 8.367,17.183 C8.367,17.183 5.767,6.984 5.767,6.984 C5.767,6.984 8.321,6.984 8.321,6.984 C9.426,11.823 9.542,12.358 9.846,14.569 ZM8.915,23.622 C8.534,22.984 8.245,22.481 8.245,21.874 C8.245,20.615 9.145,19.634 10.874,19.634 C12.499,19.634 13.373,20.673 13.373,21.830 C13.373,23.072 12.369,23.839 11.454,24.214 C11.454,24.214 12.847,26.236 12.847,26.236 C12.847,26.236 13.016,26.232 13.192,25.386 C13.192,25.386 15.069,25.384 15.069,25.384 C15.069,26.193 14.680,26.769 14.055,27.814 C14.259,28.042 14.474,28.290 15.157,28.290 C15.301,28.290 15.448,28.272 15.595,28.272 C15.595,28.272 15.595,29.894 15.595,29.894 C15.595,29.894 13.792,29.894 13.792,29.894 C13.550,29.894 13.166,29.719 12.643,29.217 C12.179,29.486 11.322,29.993 9.916,29.993 C7.547,29.993 6.399,28.436 6.399,26.843 C6.399,26.467 6.472,26.078 6.618,25.685 C7.143,24.418 8.202,23.939 8.915,23.622 ZM11.542,21.801 C11.542,21.440 11.263,21.180 10.830,21.180 C10.452,21.180 10.103,21.412 10.103,21.786 C10.103,22.091 10.263,22.350 10.595,22.883 C11.091,22.623 11.542,22.293 11.542,21.801 ZM10.150,28.272 C10.699,28.272 11.150,28.027 11.571,27.797 C11.571,27.797 9.812,25.110 9.812,25.110 C9.364,25.398 8.622,25.874 8.622,26.754 C8.622,27.318 9.042,28.272 10.150,28.272 ZM20.984,19.372 C21.584,19.372 22.218,19.462 22.835,19.678 C23.500,19.910 24.027,20.250 24.452,20.648 C24.452,20.648 23.124,22.745 23.124,22.745 C23.021,22.560 22.908,22.391 22.777,22.250 C22.348,21.786 21.687,21.498 20.997,21.498 C19.459,21.498 18.483,22.855 18.483,24.703 C18.483,27.134 19.834,28.027 21.024,28.027 C21.810,28.027 22.633,27.658 23.128,26.811 C23.128,26.811 24.452,28.903 24.452,28.903 C24.374,28.976 24.293,29.047 24.215,29.110 C23.223,29.937 22.074,30.180 21.024,30.180 C17.808,30.180 15.985,27.697 15.985,24.747 C15.985,21.990 17.723,19.372 20.984,19.372 ZM29.459,19.372 C30.069,19.372 30.709,19.462 31.333,19.678 C34.469,20.761 34.673,24.156 34.673,24.849 C34.673,26.610 33.862,28.202 32.728,29.110 C31.724,29.937 30.564,30.180 29.503,30.180 C26.250,30.180 24.405,27.697 24.405,24.747 C24.405,21.990 26.163,19.372 29.459,19.372 ZM29.503,28.027 C30.723,28.027 32.032,27.161 32.103,25.021 C32.147,23.953 31.857,22.870 31.275,22.250 C30.840,21.786 30.174,21.498 29.474,21.498 C27.922,21.498 26.933,22.855 26.933,24.703 C26.933,27.134 28.298,28.027 29.503,28.027 ZM33.261,17.183 C33.261,17.183 30.694,17.183 30.694,17.183 C30.694,17.183 30.694,6.984 30.694,6.984 C30.694,6.984 35.311,6.984 35.311,6.984 C36.383,6.999 37.722,7.013 38.664,8.025 C39.144,8.558 39.478,9.368 39.478,10.292 C39.478,12.343 38.070,12.850 37.373,13.108 C37.373,13.108 39.740,17.183 39.740,17.183 C39.740,17.183 36.907,17.183 36.907,17.183 C36.907,17.183 34.878,13.543 34.878,13.543 C34.878,13.543 33.261,13.543 33.261,13.543 C33.261,13.543 33.261,17.183 33.261,17.183 ZM35.382,11.650 C35.746,11.634 36.924,11.608 36.924,10.248 C36.924,8.949 35.978,8.905 35.439,8.892 C35.439,8.892 33.261,8.892 33.261,8.892 C33.261,8.892 33.261,11.650 33.261,11.650 C33.261,11.650 35.382,11.650 35.382,11.650 ZM42.930,11.131 C42.930,11.131 46.762,6.969 46.762,6.969 C46.762,6.969 49.840,6.969 49.840,6.969 C49.840,6.969 46.212,10.756 46.212,10.756 C46.212,10.756 50.131,17.168 50.131,17.168 C50.131,17.168 47.242,17.168 47.242,17.168 C47.242,17.168 44.495,12.547 44.495,12.547 C44.495,12.547 42.930,14.178 42.930,14.178 C42.930,14.178 42.930,17.168 42.930,17.168 C42.930,17.168 40.490,17.168 40.490,17.168 C40.490,17.168 40.490,6.969 40.490,6.969 C40.490,6.969 42.930,6.969 42.930,6.969 C42.930,6.969 42.930,11.131 42.930,11.131 ZM24.832,17.473 C21.578,17.473 19.736,14.987 19.736,12.039 C19.736,9.281 21.491,6.665 24.789,6.665 C25.398,6.665 26.037,6.752 26.661,6.970 C29.796,8.053 30.000,11.447 30.000,12.141 C30.000,13.904 29.187,15.493 28.055,16.403 C27.051,17.227 25.890,17.473 24.832,17.473 ZM26.602,9.541 C26.166,9.078 25.497,8.790 24.801,8.790 C23.249,8.790 22.262,10.147 22.262,11.996 C22.262,14.424 23.626,15.320 24.832,15.320 C26.050,15.320 27.358,14.453 27.430,12.315 C27.475,11.247 27.182,10.162 26.602,9.541 Z" />
-        </svg>
-      </a>
-    </p>
-    <p class='TerminalInput'><abbr title='/bin/cat' style="color: #3D77EC;">cat</abbr> <span style="color: #2DB6FC;">links.txt</span></p>
-    <p class='TerminalOutput'><span class='TerminalTag'>Contact me</span> → <a href='/ping' target='_blank' title='Find out the best way to contact me'>/ping</a></p>
-    <p class='TerminalOutput'><span class='TerminalTag'>GitHub</span> → <a href='/github' target='_blank' title='Take a look at some of my open source projects'>/github</a></p>
-    <p class='TerminalOutput'><span class='TerminalTag'>LinkedIn</span> → <a href='/linkedin' target='_blank' title='Check out my professional profile on LinkedIn'>/linkedin</a></p>
-    <p class='TerminalOutput'><span class='TerminalTag'>Twitter</span> → <a href='/twitter' target='_blank' title='My random thoughts on software development, design and video games (mostly)'>/twitter</a></p>
-    <p class='TerminalInput'><abbr title='/bin/cat' style="color: #3D77EC;">ls</abbr> <span style="color: #2DB6FC;">~/open-source</span></p>
-    <p class='TerminalOutput'>
-      <a href='https://github.com/rafaelrinaldi/data-components' target='_blank' title='Tiny component structure for web applications'>data-components</a>
-      <a href='https://github.com/rafaelrinaldi/hn-cli' target='_blank' title='CLI to browse Hacker News'>hn-cli</a>
-      <a href='https://github.com/rafaelrinaldi/mdn' target='_blank' title='Man pages for web APIs using MDN'>mdn</a>
-      <a href='https://github.com/rafaelrinaldi/npm-search' target='_blank' title='Faster npm search'>npm-search</a>
-      <a href='https://github.com/rafaelrinaldi/pure' target='_blank' title='Port of the `pure` ZSH prompt to Fish'>pure</a>
-      <a href='https://github.com/rafaelrinaldi/til' target='_blank' title='Collection of things I learn daily'>til</a>
-      <a href='https://github.com/tslide/tslide' target='_blank' title='Terminal SlideDeck, supporting markdown'>tslide</a>
-      <a href='https://github.com/rafaelrinaldi/whereami' target='_blank' title='Get your geolocation information using freegeoip.net'>whereami</a>
-    </p>
-
-    <p class="TerminalInput"><abbr title='/usr/local/bin/lein' style="color: #3D77EC;">lein</abbr><span>repl</span></p>
-    <p class='TerminalOutput--console'>(str "Ping me at " config/name "@" config/surname ".io")</p>
-    <p></p>
-    <p>exit</p>
-    <p>Bye for now!</p>
-    <p></p>
-    <p class='TerminalInput'></p>
-  </div>
-
-  <script>
-    (function(context) {
-      'use strict';
-
-      document.title = '~/dev/rafaelrinaldi — fish';
-
-      var today = new Date(),
-          header = context.querySelector('p'),
-          headerText = header.textContent.replace('{{today}}', today),
-          entries = context.querySelectorAll('p'),
-          lastEntry = entries[entries.length - 1],
-          historyIndex = -1,
-          historyEntries = [
-            '“Ah ah ah, you didn\'t say the magic word”',
-            '<span style="color: #3D77EC;">format</span><span style="color: #2DB6FC;">c://</span>',
-            '“It\'s a Unix system, I know this”',
-            '<span style="color: #3D77EC;">emacs</span><span style="color: #2DB6FC;">/tmp/password.txt</span>',
-            '<span style="color: #3D77EC;">rm</span><span style="color: #2DB6FC;">-rf ~</span>',
-            'Some call me /^F[a-z\'-]+$/g, but I have many names',
-            '<span style="color: #3D77EC;">git</span><span style="color: #2DB6FC;">push origin master --force</span> <span style="color: #E0E0E0"># ( ╯°□°）╯︵ ┻━┻</span>',
-          ];
-
-      header.innerHTML = headerText;
-
-      function getURLParameters(url) {
-        var parameters = {};
-
-        url
-          .slice(1)
-          .split('&')
-          .forEach(function(parameter) {
-            parameter = parameter.split('=');
-            parameters[parameter[0]] = parameter[1];
-          });
-
-        return parameters;
-      }
-
-      function checkURLParameters() {
-        var parameters = getURLParameters(location.search);
-
-        if('skype' in parameters) chatOnSkype(parameters.skype);
-      }
-
-      function chatOnSkype(user) {
-        location.href = 'skype:' + user + '?chat';
-      }
-
-      function resetTerminal(callback) {
-        var interval = 0;
-        var totalEntries = entries.length - 1;
-
-        [].forEach.call(entries, function(entry, index) {
-          entry.style.opacity = 0;
-          interval += index * Math.random() * 25;
-
-          setTimeout(function() {
-            entry.style.opacity = 1;
-            if (index === totalEntries && callback) callback();
-          }, interval);
-        });
-      }
-
-      function nextHistoryEntry() {
-        historyIndex = historyIndex >= historyEntries.length - 1 ? 0 : ++historyIndex;
-        updateLastHistoryEntry();
-      }
-
-      function previousHistoryEntry() {
-        historyIndex = historyIndex <= 0 ? historyEntries.length - 1 : --historyIndex;
-        updateLastHistoryEntry();
-      }
-
-      function updateLastHistoryEntry() {
-        lastEntry.innerHTML = historyEntries[historyIndex] + ' ';
-      }
-
-      function resetLastHistoryEntry() {
-        historyIndex = -1;
-        lastEntry.innerHTML = '';
-      }
-
-      // Will render a random history entry once terminal is reset
-      function randomHistoryEntry() {
-        historyIndex = Math.ceil(Math.random() * historyEntries.length - 1);
-        updateLastHistoryEntry();
-      }
-
-      if (document.addEventListener) {
-        document.addEventListener('keydown', function(event) {
-          switch(event.which) {
-            case 13 :
-              resetTerminal();
-            break;
-
-            case 38 :
-              nextHistoryEntry();
-            break;
-
-            case 40 :
-              previousHistoryEntry();
-            break;
-
-            case 17 :
-            case 8 :
-              resetLastHistoryEntry();
-            break;
+        @media screen and (min-width: 40rem) {
+          body {
+            font-size: calc(1rem + 0.075vw);
+            line-height: 1.8;
+            max-width: 39rem;
+            padding: 80px;
           }
-        });
-      }
+        }
 
-      checkURLParameters();
-      resetTerminal();
+        @media screen and (min-width: 90rem) {
+          body { padding: 100px; }
+        }
 
-      // Reveal body
-      document.body.hidden = false;
-    })(document);
-  </script>
-</body>
+        p:first-of-type { margin-top: 0; }
+
+        a {
+          background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 3px, #2E2734 3px, #2E2734 4px, rgba(0, 0, 0, 0) 4px);
+          color: inherit;
+          text-decoration: none;
+          text-shadow: -1px -1px 0 #FFFFFA, 1px -1px 0 #FFFFFA, -1px 1px 0 #FFFFFA, 1px 1px 0 #FFFFFA;
+        }
+
+        a:hover {
+          background-color: #F7F7ED;
+          background-image: none;
+          text-shadow: none;
+        }
+
+        a:active, a:visited { color: rgba(0, 0, 0, 0.25); }
+
+        .footer {
+          color: rgba(0, 0, 0, 0.45);
+          padding-top: 1rem;
+        }
+
+        .footer::before {
+          background-color: rgba(0, 0, 0, 0.45);
+          content: '';
+          display: block;
+          height: 1px;
+          margin-bottom: 0.5rem;
+          width: 1rem;
+        }
+        </style>
+    </head>
+
+    <body>
+        <p>I build digital products at <a href="https://work.co">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
+        <p>I&rsquo;m also an advisor at <a href="https://magnetis.com.br">Magnetis</a>, a financial technology company based in Sao Paulo, Brazil.</p>
+        <p>I specialize in user interface development, web application architecture, and leading technical teams while utilizing modern tools and practices.</p>
+        <p>My passion is to find <a href="http://www.faqs.org/docs/artu/ch01s06.html" title="The Unix Philosophy">simple solutions</a> for complex problems.</p>
+        <p>Some of my recent client work features <a href="https://apple.com">Apple</a>, <a href="https://hioscar.com">Oscar</a> and <a href="https://t-mobile.com">T-Mobile</a>.</p>
+        <p>You can find me on <a href="https://github.com/rafaelrinaldi">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi">LinkedIn</a>.</p>
+        <p class="footer"><em>Best,<br />Rafael Rinaldi.</em></p>
+
+        <noscript><link rel="preload" href="{externalCSS}" as="style" /></noscript>
+        <script>
+          {loadCSS}
+          loadCSS('{externalCSS}')
+        </script>
+    </body>
 </html>

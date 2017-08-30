@@ -1,12 +1,13 @@
 {
-  "private": true,
   "scripts": {
-    "dev": "live-server --port=8080 --host=localhost --open=./index.dev.html",
-    "build:404": "htmlmin ./404.dev.html > ./404.html",
-    "build": "npm run build:404 & htmlmin ./index.dev.html > ./index.html"
+    "build": "sh build.sh"
   },
   "devDependencies": {
-    "htmlmin": "0.0.5",
-    "live-server": "^0.9.1"
+    "htmlmin": "0.0.7",
+    "replace": "^0.3.0",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "get-stdin": "^5.0.1"
   }
 }
