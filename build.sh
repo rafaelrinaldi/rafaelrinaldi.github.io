@@ -1,11 +1,18 @@
+# Just so I don't have to apt-get md5sum
+hashify() {
+    node -p "require('crypto').createHash('md5').update(require('fs').readFileSync('$1')).digest('hex')"
+}
+
 echo "Generating temporary HTML file..."
-tempfile=`cp -v index.dev.html /tmp | cut -d'>' -f2 | tr -d [:space:]`
+template="index.dev.html"
+cp $template /tmp
+tempfile="/tmp/$template"
 echo "Temporary HTML file: $tempfile"
 echo "Downloading CSS loader..."
 loadCSS=`curl -Ls https://unpkg.com/fg-loadcss`
 echo "Done."
 echo "Hashing external CSS..."
-externalCSSHash=`cat external.css | md5sum | cut -d" " -f1`
+externalCSSHash=`hashify external.css`
 externalCSS="$externalCSSHash.css"
 cp external.css $externalCSS
 echo "External CSS file: $externalCSS"
