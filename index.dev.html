@@ -47,28 +47,8 @@
              padding: 25px;
          }
 
-         body.font-loaded {
+         .font-loaded {
              font-family: T4c, georgia, serif;
-         }
-
-         @media screen and (min-width: 40rem) {
-             body {
-                 font-size: calc(1rem + 0.1vw);
-                 line-height: 1.8;
-                 max-width: 39rem;
-                 padding: 80px;
-             }
-         }
-
-         @media screen and (min-width: 90rem) {
-             body {
-                 padding: 100px;
-                 font-size: calc(1rem + 0.125vw);
-             }
-
-             a {
-                 text-shadow: -1px -1px 0 #FFFFFA, 2px -1px 0 #FFFFFA, -1px 1px 0 #FFFFFA, 1px 2px 0 #FFFFFA;
-             }
          }
 
          p:first-of-type { margin-top: 0; }
@@ -104,7 +84,7 @@
 
          .wc {
              bottom: 2rem;
-             cursor: default;
+             display: none;
              opacity: 0.25;
              position: absolute;
              right: 2rem;
@@ -113,7 +93,32 @@
 
          .wc:hover { opacity: 1; }
 
-         .rr, .wc { font-size: 85% }
+         .rr, .wc {
+             cursor: default;
+             font-size: 85%;
+         }
+
+         @media screen and (min-width: 40rem) {
+             body {
+                 font-size: calc(1rem + 0.1vw);
+                 line-height: 1.8;
+                 max-width: 39rem;
+                 padding: 80px;
+             }
+
+             .wc { display: block; }
+         }
+
+         @media screen and (min-width: 90rem) {
+             body {
+                 padding: 100px;
+                 font-size: calc(1rem + 0.125vw);
+             }
+
+             a {
+                 text-shadow: -1px -1px 0 #FFFFFA, 2px -1px 0 #FFFFFA, -1px 1px 0 #FFFFFA, 1px 2px 0 #FFFFFA;
+             }
+         }
         </style>
     </head>
 
