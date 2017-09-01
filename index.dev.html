@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-<meta name="description" content="Rafael Rinaldi is a user interface developer based in Brooklyn, New York.">
-<meta name="image" content="http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200">
-<meta name="url" content="https://rinaldi.io">
-<meta name="title" content="Rafael Rinaldi">
-<meta name="keywords" content="Brooklyn, DUMBO, Grafikonstruct, IED, Istituto Europeo di Design, Magnetis, NYC, Netshoes, Rafael Rinaldi, Work & Co, agile, application architecture, clojure, clojurescript, components, css, design, developer, es2015, es6, fintech, flux, functional programming, javascript, leadership, modular, preact, product development, react native, react, redux, software, tech, technical leadership, ui developer, unix, user interface, web, webpack">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="og:description" content="Rafael Rinaldi is a user interface developer based in Brooklyn, New York.">
-<meta name="og:image" content="http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200">
-<meta name="og:title" content="Rafael Rinaldi">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:description" content="Rafael Rinaldi is a user interface developer based in Brooklyn, New York.">
-<meta name="twitter:image" content="http://www.gravatar.com/avatar/ffc5102ee85d0d7ec57200fa3e6b1fce?s=200">
-<meta name="twitter:title" content="Rafael Rinaldi">
-<meta name="twitter:site" content="@rafaelrinaldi">
+        {metatags}
 
         <title>Rafael Rinaldi</title>
 
         <style>
+         @font-face {
+             font-family: 'T4c';
+             src: url('T4c.eot');
+             src: url('T4c.eot?#iefix') format('embedded-opentype'),
+             url('T4c.woff2') format('woff2'),
+             url('T4c.woff') format('woff'),
+             url('T4c.svg# T4c') format('svg');
+             font-style: normal;
+             font-stretch: normal;
+             unicode-range: U+0020-00FE;
+         }
+
          * {
              text-rendering: optimizeLegibility;
              -webkit-font-smoothing: antialiased;
@@ -41,7 +39,7 @@
          body {
              background-color: #FFFFFA;
              color: #2E2734;
-             font-family: Georgia, serif;
+             font-family: georgia, serif;
              font-size: 1rem;
              line-height: 1.4;
              margin: 0;
@@ -49,9 +47,13 @@
              padding: 25px;
          }
 
+         body.font-loaded {
+             font-family: T4c, georgia, serif;
+         }
+
          @media screen and (min-width: 40rem) {
              body {
-                 font-size: calc(1.15rem + 0.10vw);
+                 font-size: calc(1rem + 0.1vw);
                  line-height: 1.8;
                  max-width: 39rem;
                  padding: 80px;
@@ -59,49 +61,103 @@
          }
 
          @media screen and (min-width: 90rem) {
-             body { padding: 100px; }
+             body {
+                 padding: 100px;
+                 font-size: calc(1rem + 0.125vw);
+             }
+
+             a {
+                 text-shadow: -1px -1px 0 #FFFFFA, 2px -1px 0 #FFFFFA, -1px 1px 0 #FFFFFA, 1px 2px 0 #FFFFFA;
+             }
          }
 
          p:first-of-type { margin-top: 0; }
 
          a {
-             background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #2E2734 2px, #2E2734 3px, rgba(0, 0, 0, 0) 3px);
+             position: relative;
              color: inherit;
              text-decoration: none;
-             text-shadow: -1px -1px 0 #FFFFFA, 1px -1px 0 #FFFFFA, -1px 1px 0 #FFFFFA, 1px 1px 0 #FFFFFA;
          }
 
-         a:hover {
-             background-color: #F7F7ED;
-             background-image: none;
-             text-shadow: none;
+         a::after {
+             position: absolute;
+             content: '';
+             display: block;
+             width: 100%;
+             height: 1px;
+             background-color: #2E2734;
+             left: 0;
+             bottom: 2px;
+             z-index: -1;
          }
 
+         a:hover { background-color: #F7F7ED; }
          a:active, a:visited { color: rgba(0, 0, 0, 0.35); }
+         abbr { text-decoration: none; }
 
-         p:last-of-type {
-             color: rgba(0, 0, 0, 0.5);
-             padding-top: 1rem;
+         .rr {
+             display: inline-block;
+             font-weight: bold;
+             margin-top: 1.05rem;
+             opacity: 0.85;
          }
+
+         .wc {
+             bottom: 2rem;
+             cursor: default;
+             opacity: 0.25;
+             position: absolute;
+             right: 2rem;
+             transition: opacity 0.25s linear;
+         }
+
+         .wc:hover { opacity: 1; }
+
+         .rr, .wc { font-size: 85% }
         </style>
     </head>
 
     <body>
-        <p>I build digital products at <a href="https://work.co" target="_blank" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
-        <p>I&rsquo;m also an advisor at <a href="https://magnetis.com.br" target="_blank" target="_blank">Magnetis</a>, a financial technology company based in Sao Paulo, Brazil.</p>
+        <p>My name is Rafael Rinaldi.</p>
+        <p>I build digital products at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
+        <p>I&rsquo;m also an advisor at <a href="https://magnetis.com.br" target="_blank">Magnetis</a>, a financial technology company based in Sao Paulo, Brazil.</p>
         <p>I specialize in user interface development, web application architecture, and leading technical teams while utilizing modern tools and practices.</p>
-        <p>My passion is to find <a href="http://www.ru.j-npcs.org/usoft/WWW/LJ/Articles/unixtenets.html" target="_blank" target="_blank">simple</a>&nbsp;<a href="https://www.vitsoe.com/us/about/good-design" target="_blank">solutions</a> for complex problems.</p>
-        <p>Some of my recent client work features <a href="https://apple.com" target="_blank" target="_blank">Apple</a>, <a href="https://hioscar.com" target="_blank">Oscar</a> and <a href="https://t-mobile.com" target="_blank">T-Mobile</a>.</p>
-        <p><a href="mailto:rafael[at]rinaldi[dot]io">Get in touch</a> or find me on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a>.</p>
-        <p><em>Best,<br />Rafael Rinaldi.</em></p>
+        <p>My passion is to find <a href="http://www.ru.j-npcs.org/usoft/WWW/LJ/Articles/unixtenets.html" target="_blank">simple</a>&nbsp;<a href="https://www.vitsoe.com/us/about/good-design">solutions</a> for complex problems.</p>
+        <p>Some of my recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="https://hioscar.com">Oscar</a> and <a href="https://t-mobile.com" >T-Mobile</a>.</p>
+        <p><a href="mailto:rafael[at]rinaldi[dot]io">Get in touch</a> or find me on <a href="https://github.com/rafaelrinaldi">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi">LinkedIn</a>.</p>
+        <abbr class="rr" title="Rafael Rinaldi">RR</abbr>
+        <span class="wc">★★</span>
 
-        <noscript><link rel="preload" href="{externalCSS}" as="style" /></noscript>
         <script>
-         {loadCSS}
-         loadCSS('{externalCSS}')
-         document.querySelector('a[href^=mailto]').addEventListener('mouseover', function (event) {
-             this.href = 'mailto:rafael@rinaldi.io'
-         }, { once: true })
+         {loadFonts}
+         (function () {
+             var wc = document.querySelector('.wc')
+             var wcOpacity = wc.style.opacity
+             var wcTrigger = document.querySelector('a[href*="work.co"]')
+
+             function toggleWC(isMouseOver) {
+                 wc.style.opacity = isMouseOver ? 1 : wcOpacity
+             }
+
+             document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
+                 this.href = 'mailto:rafael@rinaldi.io'
+             }, { once: true })
+
+             wcTrigger.addEventListener('mouseover', function() {
+                 toggleWC(true)
+             })
+
+             wcTrigger.addEventListener('mouseout', function() {
+                 toggleWC(false)
+             })
+
+             var font = new FontFaceObserver('T4c')
+             font.load().then(function () {
+                 document.body.classList.add('font-loaded')
+             }, function (error) {
+                 console.warn('Problem loading font')
+             })
+         })()
         </script>
     </body>
 </html>
