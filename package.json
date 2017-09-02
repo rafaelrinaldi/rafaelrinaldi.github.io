@@ -4,8 +4,7 @@
   },
   "devDependencies": {
     "htmlmin": "0.0.7",
-    "replace": "^0.3.0",
-    "standard": "^10.0.3"
+    "replace": "^0.3.0"
   },
   "dependencies": {
     "get-stdin": "^5.0.1"
