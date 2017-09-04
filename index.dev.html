@@ -7,44 +7,44 @@
 
         <style>
          @font-face {
-           font-family: 'T4c';
-           src: url('T4c.eot');
-           src: url('T4c.eot?#iefix') format('embedded-opentype'),
-           url('T4c.woff2') format('woff2'),
-           url('T4c.woff') format('woff'),
-           url('T4c.svg# T4c') format('svg');
-           font-style: normal;
-           font-stretch: normal;
-           unicode-range: U+0020-00FE;
+             font-family: 'T4c';
+             src: url('T4c.eot');
+             src: url('T4c.eot?#iefix') format('embedded-opentype'),
+             url('T4c.woff2') format('woff2'),
+             url('T4c.woff') format('woff'),
+             url('T4c.svg# T4c') format('svg');
+             font-style: normal;
+             font-stretch: normal;
+             unicode-range: U+0020-00FE;
          }
 
          * {
-           text-rendering: optimizeLegibility;
-           font-smoothing: antialiased;
-           -moz-osx-font-smoothing: grayscale;
+             text-rendering: optimizeLegibility;
+             font-smoothing: antialiased;
+             -moz-osx-font-smoothing: grayscale;
          }
 
          ::-moz-selection {
-           background-color: #F7F7ED;
-           color: #2E2734;
-           text-shadow: none;
+             background-color: #F7F7ED;
+             color: #2E2734;
+             text-shadow: none;
          }
 
          ::selection{
-           background-color: #F7F7ED;
-           color:#2E2734;
-           text-shadow: none;
+             background-color: #F7F7ED;
+             color:#2E2734;
+             text-shadow: none;
          }
 
          body {
-           background-color: #FFFFFA;
-           color: #2E2734;
-           font-family: georgia, serif;
-           font-size: 1rem;
-           line-height: 1.6;
-           margin: 0;
-           max-width: 100%;
-           padding: 25px;
+             background-color: #FFFFFA;
+             color: #2E2734;
+             font-family: georgia, serif;
+             font-size: 1rem;
+             line-height: 1.6;
+             margin: 0;
+             max-width: 100%;
+             padding: 25px;
          }
 
          .font-loaded { font-family: T4c, georgia, serif; }
@@ -52,60 +52,63 @@
          p:first-of-type { margin-top: 0; }
 
          a {
-           background-color: transparent;
-           background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
-           background-position: 0% 89%, 100% 89%, 0% 89%;
-           background-repeat: no-repeat, no-repeat, repeat-x;
-           background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-           color: inherit;
-           position: relative;
-           text-decoration: none;
-           text-shadow: 0.03em 0 #FFFFFA, -0.03em 0 #FFFFFA, 0 0.03em #FFFFFA, 0 -0.03em #FFFFFA, 0.06em 0 #FFFFFA, -0.06em 0 #FFFFFA, 0.09em 0 #FFFFFA, -0.09em 0 #FFFFFA, 0.12em 0 #FFFFFA, -0.12em 0 #FFFFFA, 0.15em 0 #FFFFFA, -0.15em 0 #FFFFFA;
+             background-color: transparent;
+             background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+             background-position: 0% 89%, 100% 89%, 0% 89%;
+             background-repeat: no-repeat, no-repeat, repeat-x;
+             background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+             color: inherit;
+             text-decoration: none;
+             text-shadow: 0.03em 0 #FFFFFA, -0.03em 0 #FFFFFA, 0 0.03em #FFFFFA, 0 -0.03em #FFFFFA, 0.06em 0 #FFFFFA, -0.06em 0 #FFFFFA, 0.09em 0 #FFFFFA, -0.09em 0 #FFFFFA, 0.12em 0 #FFFFFA, -0.12em 0 #FFFFFA, 0.15em 0 #FFFFFA, -0.15em 0 #FFFFFA;
          }
 
-         a:hover { background-color: #F7F7ED; }
-         a:active, a:visited { color: rgba(0, 0, 0, 0.35); }
+         a:hover {
+             background-color: #EDEDE3;
+             background-image: none;
+             text-shadow: none;
+         }
+         a:active { color: rgba(0, 0, 0, 0.45); }
          abbr { text-decoration: none; }
 
          .rr {
-           display: inline-block;
-           font-weight: bold;
-           margin-top: 1.05rem;
-           opacity: 0.85;
+             display: inline-block;
+             font-weight: bold;
+             margin-top: 1.05rem;
+             opacity: 0.85;
          }
 
          .wc {
-           bottom: 2rem;
-           display: none;
-           opacity: 0.25;
-           position: absolute;
-           right: 2rem;
-           transition: opacity 0.25s linear;
+             bottom: 2rem;
+             display: none;
+             opacity: 0.25;
+             position: absolute;
+             right: 2rem;
+             transition: opacity 0.25s linear;
          }
 
          .wc:hover { opacity: 1; }
 
          .rr, .wc {
-           cursor: default;
-           font-size: 85%;
+             cursor: default;
+             font-size: 85%;
          }
 
          @media screen and (min-width: 40rem) {
-           body {
-             font-size: calc(1rem + 0.1vw);
-             line-height: 1.8;
-             max-width: 39rem;
-             padding: 80px;
-           }
+             body {
+                 font-size: calc(1rem + 0.1vw);
+                 line-height: 1.8;
+                 max-width: 39rem;
+                 padding: 80px;
+             }
 
-           .wc { display: block; }
+             .wc { display: block; }
          }
 
          @media screen and (min-width: 90rem) {
-           body {
-             padding: 100px;
-             font-size: calc(1rem + 0.125vw);
-           }
+             body {
+                 padding: 100px;
+                 font-size: calc(1rem + 0.125vw);
+             }
          }
         </style>
     </head>
@@ -114,7 +117,7 @@
         <p>My name is Rafael Rinaldi.</p>
         <p>I build digital products at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
         <p>I specialize in user interface development, web application architecture, and leading technical teams while utilizing modern tools and practices.</p>
-        <p>My passion is to find <a href="http://www.ru.j-npcs.org/usoft/WWW/LJ/Articles/unixtenets.html" target="_blank">simple</a>&nbsp;<a href="https://www.vitsoe.com/us/about/good-design">solutions</a> for complex problems.</p>
+        <p>My passion is to find <a href="http://wiki.c2.com/?UnixDesignPhilosophy" target="_blank">simple</a> solutions for complex problems.</p>
         <p>Some of my recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="https://hioscar.com">Oscar</a> and <a href="https://t-mobile.com" >T-Mobile</a>.</p>
         <p><a href="mailto:rafael[at]rinaldi[dot]io">Get in touch</a> or find me on <a href="https://github.com/rafaelrinaldi">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi">LinkedIn</a>.</p>
         <abbr class="rr" title="Rafael Rinaldi">RR</abbr>
