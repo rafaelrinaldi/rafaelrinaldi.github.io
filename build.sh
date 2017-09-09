@@ -7,7 +7,7 @@ echo "Downloading Font Face Observer..."
 loadFonts=`curl -Ls https://unpkg.com/fontfaceobserver`
 echo "Done."
 echo "Generating HTML meta tags..."
-metatags=`cat data.json | node meta-tags.js`
+metatags=`cat data.json | html-meta-tags`
 echo "Done."
 echo "Replacing variables..."
 replace -s "{metatags}" "$metatags" $tempfile
