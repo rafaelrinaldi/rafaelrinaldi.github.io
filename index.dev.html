@@ -40,8 +40,8 @@
        background-color: #FFF;
        color: #2E2734;
        font-family: georgia, serif;
-       font-size: 1.15rem;
-       line-height: 1.6;
+       font-size: calc(0.8rem + 0.3vw);
+       line-height: 1.8;
        margin: 0;
        max-width: 100%;
        padding: 25px;
@@ -51,41 +51,50 @@
 
      p:first-of-type { margin-top: 0; }
 
+     abbr:not(.wc):not(.rr) {
+       cursor: help;
+       text-decoration: underline wavy rgba(0, 0, 0, 0.65);
+     }
+
      a {
        background-color: transparent;
-       background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
        background-position: 0% 89%, 100% 89%, 0% 89%;
        background-repeat: no-repeat, no-repeat, repeat-x;
        background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
        color: inherit;
        position: relative;
        text-decoration: none;
+     }
+
+     a:not(:hover) {
+       background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
        text-shadow: 0.03em 0 #FFF, -0.03em 0 #FFF, 0 0.03em #FFF, 0 -0.03em #FFF, 0.06em 0 #FFF, -0.06em 0 #FFF, 0.09em 0 #FFF, -0.09em 0 #FFF, 0.12em 0 #FFF, -0.12em 0 #FFF, 0.15em 0 #FFF, -0.15em 0 #FFF;
      }
 
      a:hover {
        background-color: #2E2734;
-       background-image: none;
        color: #FFF;
-       text-shadow: none;
+       outline: 0.25rem solid #2E2734;
+       transition: color 0.15s ease-out;
      }
 
      a:active { color: rgba(0, 0, 0, 0.45); }
-     abbr { text-decoration: none; }
 
      .rr {
        display: inline-block;
        font-weight: bold;
        margin-top: 1.05rem;
        opacity: 0.85;
+       text-decoration: none;
      }
 
      .wc {
-       bottom: 2rem;
+       bottom: 3rem;
        display: none;
        opacity: 0.25;
-       position: absolute;
-       right: 2rem;
+       position: fixed;
+       right: 3rem;
+       transform: translateY(-50%);
        transition: opacity 0.25s linear;
      }
 
@@ -94,35 +103,38 @@
      .rr, .wc {
        cursor: default;
        font-size: 85%;
+       text-decoration: none;
+     }
+
+     small {
+       font-size: 75%;
+       margin-left: 0.5rem;
      }
 
      @media screen and (min-width: 40rem) {
        body {
          font-size: calc(1rem + 0.15vw);
-         line-height: 1.8;
-         max-width: 42rem;
-         padding: 80px;
+         max-width: 40rem;
+         padding: 60px;
        }
 
        .wc { display: block; }
-     }
-
-     @media screen and (min-width: 90rem) {
-       body { padding: 100px; }
      }
     </style>
   </head>
 
   <body>
     <p>My name is Rafael Rinaldi.</p>
-    <p>I build digital products at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
-    <p>I am a Live Coding Instructor for <a href="https://www.udacity.com" target="_blank">Udacity’s</a> React Nanodegree program and I am an advisor at <a href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a Brazilian fintech startup.</p>
-    <p>I specialize in user interface development, application architecture, and leading technical teams while utilizing modern tools and practices.</p>
+    <p>I build digital products with my team at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
+    <p>I’m a Live Coding Instructor for <a href="https://www.udacity.com" target="_blank">Udacity’s</a> React Nanodegree program and I’m an advisor at <a href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a Brazilian fintech startup.</p>
+    <p>With over a decade of experience on the field, I specialize in <abbr title="User Interface">UI</abbr> development, application architecture, and leading technical teams while utilizing modern tools and practices.</p>
+    <p style="margin-bottom: 0">Besides that <a href="https://twitter.com/ClojureNYC/status/941105331224051717" target="_blank">I’m deeply interested</a> in <a href="https://clojure.org" target="_blank">Clojure</a> and <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank">distributed systems</a>, devoting most of my studies to it at the moment.</p>
+    <p style="margin-top: 0">I believe <a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional programming</a> <small>(through a simple and expressive language such as Clojure)</small> and distributed computing have the potential to greatly reduce the complexity of writing, maintaining and scaling applications.
     <p>My passion is to find <a href="http://wiki.c2.com/?UnixDesignPhilosophy" target="_blank">simple</a> solutions for complex problems.</p>
-    <p>Some of my recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="https://hioscar.com">Oscar</a> and <a href="https://t-mobile.com" >T-Mobile</a>.</p>
-    <p><a href="mailto:rafael[at]rinaldi[dot]io">Get in touch</a> or find me on <a href="https://github.com/rafaelrinaldi">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi">LinkedIn</a>.</p>
+    <p>Some of my recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="http://ecomedia.cbs.com" target="_blank">CBS EcoMedia</a>, <a href="https://hioscar.com" target="_blank">Oscar</a> and <a href="https://t-mobile.com" target="_blank">T-Mobile</a>.</p>
+    <p>You can <a href="mailto:{emailSecret}">send me a message</a> or find me on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a>.</p>
     <abbr class="rr" title="Rafael Rinaldi">RR</abbr>
-    <span class="wc">★★</span>
+    <abbr class="wc" title="The Work You Do and the Company You Keep">★★</span>
 
     <script>
      {loadFonts}
@@ -136,7 +148,7 @@
        }
 
        document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
-         this.href = 'mailto:rafael@rinaldi.io'
+         this.href = 'mailto:{email}'
        }, { once: true })
 
        wcTrigger.addEventListener('mouseover', function() {
