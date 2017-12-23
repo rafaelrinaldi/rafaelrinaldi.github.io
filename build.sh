@@ -9,7 +9,7 @@ echo "Done."
 echo "Generating HTML meta tags..."
 metatags=`cat data.json | html-meta-tags`
 echo "Gathering email..."
-email=`git config user.email`
+email="rafael@rinaldi.io"
 emailSecret=`echo $email | sed -e "s/@/\[at\]/g" -e "s/\./\[dot\]/g"`
 echo "Done."
 echo "Replacing variables..."
