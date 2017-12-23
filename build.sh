@@ -14,7 +14,7 @@ echo "Done."
 echo "Replacing variables..."
 replace -s "{metatags}" "$metatags" $tempfile
 replace -s "{loadFonts}" "$loadFonts" $tempfile
-replace -s "{email}" "$email" $tempfile
+replace -s "{email}" "$EMAIL" $tempfile
 replace -s "{emailSecret}" "$emailSecret" $tempfile
 echo "Done."
 echo "Compressing HTML file..."
