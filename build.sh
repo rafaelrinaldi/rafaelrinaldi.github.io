@@ -9,8 +9,7 @@ echo "Done."
 echo "Generating HTML meta tags..."
 metatags=`cat data.json | html-meta-tags`
 echo "Gathering email..."
-email="rafael@rinaldi.io"
-emailSecret=`echo $email | sed -e "s/@/\[at\]/g" -e "s/\./\[dot\]/g"`
+emailSecret=`echo $EMAIL | sed -e "s/@/\[at\]/g" -e "s/\./\[dot\]/g"`
 echo "Done."
 echo "Replacing variables..."
 replace -s "{metatags}" "$metatags" $tempfile
