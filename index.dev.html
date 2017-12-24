@@ -40,7 +40,6 @@
        background-color: #FFF;
        color: #2E2734;
        font-family: georgia, serif;
-       font-size: calc(0.8rem + 0.8vw);
        line-height: 1.8;
        margin: 0;
        max-width: 100%;
@@ -109,12 +108,18 @@
      small {
        font-size: 75%;
      }
+     @media screen and (min-width: 40rem) {
+       body {
+         font-size: calc(0.8rem + 0.35vw);
+         padding: 50px;
+       }
+     }
 
      @media screen and (min-width: 60rem) {
        body {
          font-size: calc(1rem + 0.15vw);
          max-width: 40rem;
-         padding: 60px;
+         padding: 70px;
        }
 
        .wc { display: block; }
