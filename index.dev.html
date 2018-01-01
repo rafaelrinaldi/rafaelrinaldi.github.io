@@ -44,6 +44,7 @@
        margin: 0;
        max-width: 100%;
        padding: 25px;
+       position: relative;
      }
 
      .font-loaded { font-family: T4c, georgia, serif; }
@@ -63,18 +64,19 @@
        color: inherit;
        position: relative;
        text-decoration: none;
+       transition: color 0.15s ease-out;
      }
 
-     a:not(:hover) {
+     a:not(:hover):not(.active) {
        background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
        text-shadow: 0.03em 0 #FFF, -0.03em 0 #FFF, 0 0.03em #FFF, 0 -0.03em #FFF, 0.06em 0 #FFF, -0.06em 0 #FFF, 0.09em 0 #FFF, -0.09em 0 #FFF, 0.12em 0 #FFF, -0.12em 0 #FFF, 0.15em 0 #FFF, -0.15em 0 #FFF;
      }
 
-     a:hover {
+     a:hover,
+     .active {
        background-color: #2E2734;
        color: #FFF;
        outline: 0.25rem solid #2E2734;
-       transition: color 0.15s ease-out;
      }
 
      .rr {
@@ -122,16 +124,36 @@
 
        .wc { display: block; }
      }
+
+     [role=button] {
+       display: block;
+       cursor: pointer;
+       background-color: transparent;
+       border: none;
+       float: right;
+       font-family: inherit;
+       font-size: 85%;
+       padding: 0.25rem;
+       transition: color 0.15s ease-out;
+     }
+
+     [role=button]:hover {
+       background-color: #2E2734;
+       color: #FFF;
+     }
+
+     .hidden { display: none }
     </style>
   </head>
 
   <body>
+    <button role="button" aria-pressed="false" aria-label="Toggle content for more detailed version" data-toggle-content>&lsqb;&plus;&rsqb;</button>
     <p>My name is Rafael Rinaldi.</p>
     <p>I build digital products with my team at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
-    <p>I’m a Live Coding Instructor for <a href="https://www.udacity.com" target="_blank">Udacity’s</a>&nbsp;<a href="https://reactjs.org" target="_blank">React</a> Nanodegree program and I’m an advisor at <a href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a Brazilian fintech startup.</p>
-    <p>With over a decade of experience on the field, I specialize in <abbr title="User Interface">UI</abbr> development, application architecture, and leading technical teams while utilizing modern tools and practices.</p>
-    <p style="margin-bottom: 0"><a href="https://twitter.com/ClojureNYC/status/941105331224051717" target="_blank">I’m deeply interested</a> in <a href="https://clojure.org" target="_blank">Clojure</a> and <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank">distributed systems</a>, devoting most of my studies to it at the moment.</p>
-    <p style="margin-top: 0">I believe <a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional programming</a>&nbsp;<small>(through a simple and expressive language such as Clojure)</small> and distributed computing have the potential to greatly reduce the complexity of writing, maintaining and scaling applications.
+    <p class="hidden">I’m a Live Coding Instructor for <a href="https://www.udacity.com" target="_blank">Udacity’s</a>&nbsp;<a href="https://reactjs.org" target="_blank">React</a> Nanodegree program and I’m an advisor at <a href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a Brazilian fintech startup.</p>
+    <p><span class="hidden">With over a decade of experience on the field,&nbsp;</span>I specialize in <abbr title="User Interface">UI</abbr> development, application architecture, and leading technical teams while utilizing modern tools and practices.</p>
+    <p class="hidden" style="margin-bottom: 0"><a href="https://twitter.com/ClojureNYC/status/941105331224051717" target="_blank">I’m deeply interested</a> in <a href="https://clojure.org" target="_blank">Clojure</a> and <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank">distributed systems</a>, devoting most of my studies to it at the moment.</p>
+    <p class="hidden" style="margin-top: 0">I believe <a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional programming</a>&nbsp;<small>(through a simple and expressive language such as Clojure)</small> and distributed computing have the potential to greatly reduce the complexity of writing, maintaining and scaling applications.
     <p>My passion is to find <a href="http://wiki.c2.com/?UnixDesignPhilosophy" target="_blank">simple</a> solutions for complex problems.</p>
     <p>Some of my recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="http://ecomedia.cbs.com" target="_blank">CBS EcoMedia</a>, <a href="https://hioscar.com" target="_blank">Oscar</a> and <a href="https://t-mobile.com" target="_blank">T-Mobile</a>.</p>
     <p>You can <a href="mailto:{emailSecret}">send me a message</a> or find me on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a>.</p>
@@ -144,21 +166,50 @@
        var wc = document.querySelector('.wc')
        var wcOpacity = wc.style.opacity
        var wcTrigger = document.querySelector('a[href*="work.co"]')
+       var hidden = [].slice.call(document.querySelectorAll('.hidden'))
 
-       function toggleWC(isMouseOver) {
+       function toggleWC (isMouseOver) {
          wc.style.opacity = isMouseOver ? 1 : wcOpacity
+       }
+
+       function toggleContent (target) {
+         var toggleState = target.getAttribute('aria-pressed')
+         var isTogglePressed = toggleState === 'true'
+         var text = {
+           false: '&lsqb;&plus;&rsqb;',
+           true: '&lsqb;&minus;&rsqb;'
+         }
+
+         hidden.map(function (item) {
+           item.classList.toggle('hidden')
+         })
+
+         target.setAttribute('aria-pressed', !isTogglePressed)
+         target.innerHTML = text[!isTogglePressed]
        }
 
        document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
          this.href = 'mailto:{email}'
        }, { once: true })
 
-       wcTrigger.addEventListener('mouseover', function() {
+       wcTrigger.addEventListener('mouseover', function () {
          toggleWC(true)
        })
 
-       wcTrigger.addEventListener('mouseout', function() {
+       wcTrigger.addEventListener('mouseout', function () {
          toggleWC(false)
+       })
+
+       wc.addEventListener('mouseover', function () {
+         wcTrigger.classList.add('active')
+       })
+
+       wc.addEventListener('mouseout', function () {
+         wcTrigger.classList.remove('active')
+       })
+
+       document.querySelector('[data-toggle-content]').addEventListener('click', function (event) {
+         toggleContent(event.currentTarget)
        })
 
        var font = new FontFaceObserver('T4c')
