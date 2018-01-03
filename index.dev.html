@@ -47,9 +47,9 @@
        position: relative;
      }
 
-     .font-loaded { font-family: T4c, georgia, serif; }
+     .font-loaded { font-family: T4c, georgia, serif }
 
-     p:first-of-type { margin-top: 0; }
+     p:first-of-type { margin-top: 0 }
 
      abbr:not(.wc):not(.rr) {
        cursor: help;
@@ -64,7 +64,6 @@
        color: inherit;
        position: relative;
        text-decoration: none;
-       transition: color 0.15s ease-out;
      }
 
      a:not(:hover):not(.active) {
@@ -77,6 +76,7 @@
        background-color: #2E2734;
        color: #FFF;
        outline: 0.25rem solid #2E2734;
+       transition: color 0.15s ease-out;
      }
 
      .rr {
@@ -97,17 +97,17 @@
        transition: opacity 0.25s linear;
      }
 
-     .wc:hover { opacity: 1; }
+     .wc:hover { opacity: 1 }
 
-     .rr, .wc {
+     .rr,
+     .wc {
        cursor: default;
        font-size: 85%;
        text-decoration: none;
      }
 
-     small {
-       font-size: 75%;
-     }
+     small { font-size: 75% }
+
      @media screen and (min-width: 40rem) {
        body {
          font-size: calc(0.8rem + 0.35vw);
@@ -126,10 +126,10 @@
      }
 
      [role=button] {
-       display: block;
-       cursor: pointer;
        background-color: transparent;
        border: none;
+       cursor: pointer;
+       display: block;
        float: right;
        font-family: inherit;
        font-size: 85%;
