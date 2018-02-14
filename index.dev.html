@@ -40,14 +40,14 @@
        background-color: #FFF;
        color: #2E2734;
        font-family: georgia, serif;
-       line-height: 1.8;
+       line-height: 1.6;
        margin: 0;
        max-width: 100%;
        padding: 25px;
        position: relative;
      }
 
-     .font-loaded { font-family: T4c, georgia, serif }
+     .font-loaded { font-family: T4c, charter, georgia, serif }
 
      p:first-of-type { margin-top: 0 }
 
@@ -110,14 +110,14 @@
 
      @media screen and (min-width: 40rem) {
        body {
-         font-size: calc(0.8rem + 0.35vw);
+         font-size: calc(16px + 0.35vw);
          padding: 50px;
        }
      }
 
      @media screen and (min-width: 60rem) {
        body {
-         font-size: calc(1rem + 0.15vw);
+         font-size: calc(16px + 0.15vw);
          max-width: 40rem;
          padding: 70px;
        }
@@ -149,9 +149,9 @@
   <body>
     <button role="button" aria-pressed="false" aria-label="Toggle content for more detailed version" data-toggle-content>&lsqb;&plus;&rsqb;</button>
     <p>My name is Rafael Rinaldi.</p>
-    <p>I build digital products with my team at <a href="https://work.co" target="_blank">Work &amp; Co</a>, a product design and development firm based in Brooklyn, New York.</p>
+    <p>I build digital products with my team at <a href="https://work.co" target="_blank">Work &amp; Co</a><span class="hidden">, a product design and development firm based in Brooklyn, New York</span>.</p>
     <p class="hidden">I’m a Live Coding Instructor for <a href="https://www.udacity.com" target="_blank">Udacity’s</a>&nbsp;<a href="https://reactjs.org" target="_blank">React</a> Nanodegree program and I’m an advisor at <a href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a Brazilian fintech startup.</p>
-    <p><span class="hidden">With over a decade of experience on the field,&nbsp;</span>I specialize in <abbr title="User Interface">UI</abbr> development, application architecture, and leading technical teams while utilizing modern tools and practices.</p>
+    <p><span class="hidden">With over a decade of experience on the field,&nbsp;</span>I specialize in <abbr title="User Interface">UI</abbr> development, web application architecture, and leading technical teams while utilizing modern tools and practices.</p>
     <p class="hidden" style="margin-bottom: 0"><a href="https://twitter.com/ClojureNYC/status/941105331224051717" target="_blank">I’m deeply interested</a> in <a href="https://clojure.org" target="_blank">Clojure</a> and <a href="https://en.wikipedia.org/wiki/Distributed_computing" target="_blank">distributed systems</a>, devoting most of my studies to it at the moment.</p>
     <p class="hidden" style="margin-top: 0">I believe <a href="https://en.wikipedia.org/wiki/Functional_programming" target="_blank">functional programming</a>&nbsp;<small>(through a simple and expressive language such as Clojure)</small> and distributed computing have the potential to greatly reduce the complexity of writing, maintaining and scaling applications.
     <p>My passion is to find <a href="http://wiki.c2.com/?UnixDesignPhilosophy" target="_blank">simple</a> solutions for complex problems.</p>
