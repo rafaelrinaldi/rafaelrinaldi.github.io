@@ -6,6 +6,6 @@
   "dependencies": {
     "html-meta-tags": "^1.0.0",
     "htmlmin": "0.0.7",
-    "replace": "^0.3.0"
+    "replace": "^1.0.0"
   }
 }
