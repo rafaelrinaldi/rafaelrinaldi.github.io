@@ -8,11 +8,8 @@
     <style>
      @font-face {
        font-family: 'T4c';
-       src: url('T4c.eot');
-       src: url('T4c.eot?#iefix') format('embedded-opentype'),
-       url('T4c.woff2') format('woff2'),
-       url('T4c.woff') format('woff'),
-       url('T4c.svg# T4c') format('svg');
+       src: url('T4c.woff2') format('woff2'),
+            url('T4c.woff') format('woff');
        font-style: normal;
        font-stretch: normal;
        unicode-range: U+0020-00FE;
@@ -47,7 +44,7 @@
        position: relative;
      }
 
-     .font-loaded { font-family: T4c, charter, georgia, serif }
+     .font-loaded { font-family: T4c, georgia, serif }
 
      p:first-of-type { margin-top: 0 }
 
@@ -209,6 +206,10 @@
          document.body.classList.add('font-loaded')
        })
      })()
+    </script>
+
+    <script>
+      if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
     </script>
   </body>
 </html>
