@@ -3,9 +3,9 @@
   "scripts": {
     "build": "sh build.sh"
   },
-  "dependencies": {
+  "devDependencies": {
     "html-meta-tags": "^1.1.0",
-    "htmlmin": "0.0.7",
-    "replace": "^1.0.0"
+    "html-minifier": "^3.5.21",
+    "replace": "^1.0.1"
   }
 }
