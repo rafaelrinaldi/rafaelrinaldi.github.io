@@ -82,24 +82,6 @@
        transition: color 0.15s ease-out;
      }
 
-     .wc {
-       bottom: 3rem;
-       display: none;
-       opacity: 0;
-       position: fixed;
-       right: 3rem;
-       transform: translateY(-50%);
-       transition: opacity 0.25s linear;
-     }
-
-     .wc:hover { opacity: 1 }
-
-     .wc {
-       cursor: /tmp/index.dev.html;
-       font-size: 85%;
-       text-decoration: none;
-     }
-
      body { font-size: 1.15rem; }
 
      @media screen and (min-width: 40rem) {
@@ -115,8 +97,6 @@
          max-width: 40rem;
          padding: 70px;
        }
-
-       .wc { display: block; }
      }
 
      [role=button] {
@@ -153,20 +133,12 @@
     <p><span class="hidden">I spend quite a lot of my time doing open source; either by releasing new software or helping maintain projects I care about. If you or your company benefit from my open source work, or if you simply want to show your support, please consider <a href="https://buymeacoff.ee/rinaldi">buying me a coffee</a>.</p>
     <p>You can find me on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a>.</p>
     <p class="hidden"><a href="mailto:{emailSecret}">Get in touch</a>.</p>
-    <abbr class="wc" title="The Work You Do and the Company You Keep">★★</span>
 
     <script>{loadFonts}</script>
 
     <script>
      (function () {
-       var wc = document.querySelector('.wc')
-       var wcOpacity = wc.style.opacity
-       var wcTrigger = document.querySelector('a[href*="work.co"]')
        var hidden = [].slice.call(document.querySelectorAll('.hidden'))
-
-       function toggleWC (isMouseOver) {
-         wc.style.opacity = isMouseOver ? 1 : wcOpacity
-       }
 
        function toggleContent (target) {
          var toggleState = target.getAttribute('aria-pressed')
@@ -187,22 +159,6 @@
        document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
          this.href = 'mailto:{email}'
        }, { once: true })
-
-       wcTrigger.addEventListener('mouseover', function () {
-         toggleWC(true)
-       })
-
-       wcTrigger.addEventListener('mouseout', function () {
-         toggleWC(false)
-       })
-
-       wc.addEventListener('mouseover', function () {
-         wcTrigger.classList.add('active')
-       })
-
-       wc.addEventListener('mouseout', function () {
-         wcTrigger.classList.remove('active')
-       })
 
        document.querySelector('[data-toggle-content]').addEventListener('click', function (event) {
          toggleContent(event.currentTarget)
