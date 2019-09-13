@@ -6,6 +6,6 @@
   "devDependencies": {
     "html-meta-tags": "^1.1.0",
     "html-minifier": "^4.0.0",
-    "replace": "^1.1.0"
+    "replace": "^1.1.1"
   }
 }
