@@ -5,189 +5,230 @@
 
     <title>&lrm;</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-
-    <link rel="preload" as="font" href="T4c.woff" type="font/woff" />
-    <link rel="preload" as="font" href="T4c.woff2" type="font/woff2" />
+    <link rel="preload" as="font" href="SpaceGrotesk.woff" type="font/woff" />
+    <link rel="preload" as="font" href="SpaceGrotesk.woff2" type="font/woff2" />
 
     <style>
-     @font-face {
-       font-family: 'T4c';
-       src: url('T4c.woff2') format('woff2'),
-            url('T4c.woff') format('woff');
-       font-style: normal;
-       font-stretch: normal;
-       unicode-range: U+0020-00FE;
-     }
+      :root {
+        --color-primary: #0a0a0a;
+        --color-secondary: #fff;
+      }
 
-     * {
-       text-rendering: optimizeLegibility;
-       font-smoothing: antialiased;
-       -moz-osx-font-smoothing: grayscale;
-     }
+      @font-face {
+        font-family: 'SpaceGrotesk';
+        src: url('SpaceGrotesk.woff2') format('woff2'),
+          url('SpaceGrotesk.woff') format('woff');
+      }
 
-     ::-moz-selection {
-       background-color: #2E2734;
-       color: #FFF;
-       text-shadow: none;
-     }
+      ::-moz-selection {
+        background-color: var(--color-primary);
+        color: var(--color-secondary);
+      }
 
-     ::selection {
-       background-color: #2E2734;
-       color: #FFF;
-       text-shadow: none;
-     }
+      ::selection {
+        background-color: var(--color-primary);
+        color: var(--color-secondary);
+      }
 
-     body {
-       background-color: #FFF;
-       color: #2E2734;
-       font-family: georgia, serif;
-       line-height: 1.6;
-       margin: 0;
-       max-width: 100%;
-       padding: 25px;
-       position: relative;
-       word-wrap: break-word;
-     }
+      html { font-size: calc(16px + .85vw) }
 
-     .font-loaded { font-family: T4c, georgia, serif }
+      html, body {
+        margin: 0;
+        max-width: 100%;
+        color: var(--color-primary);
+      }
 
-     p:first-of-type { margin-top: 0 }
+      body {
+        font-family: "Helvetica Neue", sans-serif;
+        background-color: var(--color-secondary);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-smooth: always;
+      }
 
-     abbr {
-       cursor: help;
-       text-decoration: underline wavy rgba(0, 0, 0, 0.65);
-     }
+      p {
+        margin-left: 6vw;
+        margin-right: 6vw;
+        margin-bottom: 0;
+        line-height: 1.45;
+        word-break: break-word;
+        padding: 0.15rem 0.2rem;
+      }
 
-     mark {
-       background-color: #fff9db;
-       outline: 5px solid #fff9db;
-     }
+      abbr { cursor: help }
 
-     a {
-       background-color: transparent;
-       background-position: 0% 89%, 100% 89%, 0% 89%;
-       background-repeat: no-repeat, no-repeat, repeat-x;
-       background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-       color: inherit;
-       position: relative;
-       text-decoration: none;
-     }
+      a,
+      abbr {
+        color: var(--color-primary);
+        text-decoration: none !important;
+        display: inline-block;
+        position: relative;
+      }
 
-     a:not(:hover):not(.active) {
-       background-image: linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(238, 238, 238), rgb(238, 238, 238)), linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
-       text-shadow: 0.03em 0 #FFF, -0.03em 0 #FFF, 0 0.03em #FFF, 0 -0.03em #FFF, 0.06em 0 #FFF, -0.06em 0 #FFF, 0.09em 0 #FFF, -0.09em 0 #FFF, 0.12em 0 #FFF, -0.12em 0 #FFF, 0.15em 0 #FFF, -0.15em 0 #FFF;
-     }
+      a:not(:hover)::after,
+      abbr:not(:hover)::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        left: 0;
+        bottom: 0;
+        transform: translateY(-3px);
+      }
 
-     a:hover,
-     .active {
-       background-color: #2E2734;
-       color: #FFF;
-       outline: 0.25rem solid #2E2734;
-       transition: color 0.15s ease-out;
-     }
+      a:hover,
+      abbr:hover {
+        color: var(--color-secondary);
+        background-color: var(--color-primary);
+      }
 
-     body { font-size: 1.15rem; }
+      .flex { display: flex }
 
-     @media screen and (min-width: 40rem) {
-       body {
-         font-size: calc(16px + 0.35vw);
-         padding: 50px;
-       }
-     }
+      .hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+        word-wrap: normal;
+      }
 
-     @media screen and (min-width: 60rem) {
-       body {
-         font-size: calc(16px + 0.2vw);
-         max-width: 42rem;
-         padding: 70px;
-       }
-     }
+      .section { min-width: calc(100vw * 0.5) }
 
-     [role=button] {
-       background-color: transparent;
-       border: none;
-       cursor: pointer;
-       display: block;
-       float: right;
-       font-family: inherit;
-       font-size: 85%;
-       padding: 0.25rem;
-       transition: color 0.15s ease-out;
-     }
+      .heading {
+        color: var(--color-secondary);
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
 
-     [role=button]:hover {
-       background-color: #2E2734;
-       color: #FFF;
-     }
+      .heading::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary);
+        transform: scaleX(0);
+        transform-origin: top right;
+      }
 
-     .hidden { display: none }
+      .heading-in::before {
+        transform: scaleX(1);
+        transition: transform 1s cubic-bezier(0.000, 0.955, 0.355, 1.000);
+      }
+
+      .content {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .logo {
+        width: 10%;
+        mix-blend-mode: exclusion;
+      }
+
+      .font-loaded { font-family: "SpaceGrotesk", "Helvetica Neue", sans-serif }
+
+      @media screen and (max-width: 90em) {
+        .heading { display: none }
+      }
+
+      @media screen and (min-width: 90em) {
+        html, body { overflow: hidden }
+        html { font-size: calc(16px + 0.5vw) }
+      }
+
+      @media screen and (min-width: 40em) {
+        .section { min-height: 100vh }
+      }
+
+      @media screen and (min-width: 40em) and (max-width: 90em) {
+        p {
+          margin-bottom: 0.5rem;
+          padding: .15rem 2rem;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <button role="button" aria-pressed="false" aria-label="Toggle content for more detailed version" data-toggle-content>&lsqb;&plus;&rsqb;</button>
+    <div class="wrapper flex">
+      <section class="section content flex">
+        <p>Rafael Rinaldi is a Software Engineer with a passion for finding <a href="https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html#id2877917" title="Basics of the Unix Philosophy: Rule of Simplicity" target="_blank">simple</a> solutions to interesting problems.</p>
 
-    <p>My name is Rafael Rinaldi.</p>
+        <p>He specializes in <abbr title="User Interface">UI</abbr> development for the web and leading technical teams.</p>
 
-    <p>I build digital products at <a href="https://work.co" target="_blank">Work &amp; Co</a><span class="hidden">, a product design and development firm based in Brooklyn, New York</span>.</p>
+        <p>Currently at <a href="https://better.com" target="_blank">Better</a>, he is working on making homeownership simpler, faster and more accessible.</p>
 
-    <p class="hidden">Throughout my career I’ve worked at design studios, digital agencies, startups, and most recently led the Front&#x2011;end team at <a href="https://netshoes.com.br" target="_blank">Netshoes</a>, the largest sporting goods e&#x2011;tailer in the world.</p>
+        <p>Previously at <a href="https://work.co" target="_blank">Work &amp; Co</a>, he has launched products for some of the world’s most respected brands such as <a href="https://apple.com" target="_blank">Apple</a>, <a href="https://epicgames.com" target="_blank">Epic Games</a>, <a href="https://hioscar.com" target="_blank">Oscar</a>, among others.</p>
 
-    <p class="hidden">I’m also a juror at <a href="https://thefwa.com" title="Favourite Website Awards" target="_blank">The FWA</a>, and advisor at <a id="magnetis" href="https://www.magnetis.com.br/convite/c85599" target="_blank">Magnetis</a>, a leading Brazilian robo-advisor.</p>
+        <p>You can find him on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a> and you can also <a href="mailto:{emailSecret}">send him a message</a>.</p>
+      </section>
 
-    <p><span class="hidden">With over a decade of experience on the field,&nbsp;</span>I specialize in component&#x2011;based <abbr title="User Interface">UI</abbr> development<span class="hidden">, web application architecture, and leading technical teams while utilizing modern tools and practices</span>; approaching performance and accessibility as first class citizens.</p>
+      <section class="section heading flex" data-heading>
+        <div class="logo">
+          <h1 class="hidden">Rafael Rinaldi</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 12">
+            <g fill-rule="nonzero" style="fill:var(--color-secondary)">
+            <path d="M3.04 12V7.84h1.84L6.928 12h2.384L7.008 7.68a3.286 3.286 0 001.768-1.208c.443-.592.664-1.31.664-2.152 0-.704-.152-1.32-.456-1.848A3.192 3.192 0 007.72 1.24C7.181.947 6.56.8 5.856.8H.928V12H3.04zm2.608-6.064H3.04V2.72h2.608c.501 0 .907.144 1.216.432.31.288.464.677.464 1.168 0 .49-.155.883-.464 1.176-.31.293-.715.44-1.216.44zM12.04 12V7.84h1.84L15.928 12h2.384l-2.304-4.32a3.286 3.286 0 001.768-1.208c.443-.592.664-1.31.664-2.152 0-.704-.152-1.32-.456-1.848A3.192 3.192 0 0016.72 1.24C16.181.947 15.56.8 14.856.8H9.928V12h2.112zm2.608-6.064H12.04V2.72h2.608c.501 0 .907.144 1.216.432.31.288.464.677.464 1.168 0 .49-.155.883-.464 1.176-.31.293-.715.44-1.216.44z"/>
+            </g>
+          </svg>
+        </div>
+      </section>
 
-    <p class="hidden" style="margin-bottom: 0">I’m currently interested in <a href="https://twitter.com/ClojureNYC/status/941105331224051717" target="_blank">Clojure</a> and <a href="https://aws.amazon.com/serverless" target="_blank">serverless architectures</a>.</p>
+      <script>{loadFonts}</script>
 
-    <p>My passion is to find <a href="http://wiki.c2.com/?UnixDesignPhilosophy" target="_blank">simple</a> solutions for big problems.</p>
+      <script>
+        (function () {
+          var heading = document.querySelector('[data-heading]')
+          var hidden = 'hidden'
+          var visibilityChange = 'visibilitychange'
 
-    <p>Recent client work features <a href="https://apple.com" target="_blank">Apple</a>, <a href="https://gainbridge.life" target="_blank">Gainbridge</a>, <a href="https://givewith.com" target="_blank">Givewith</a>, <a href="https://www.epicgames.com" target="_blank">Epic Games</a>, and <a href="https://hioscar.com" target="_blank">Oscar</a>.</p>
+          if (typeof document.msHidden !== 'undefined') {
+            hidden = 'msHidden'
+            visibilityChange = 'msvisibilitychange'
+          } else if (typeof document.webkitHidden !== 'undefined') {
+            hidden = 'webkitHidden'
+            visibilityChange = 'webkitvisibilitychange'
+          }
 
-    <p><span class="hidden">I spend quite a lot of my time doing open source; either by releasing new software or helping maintain projects I care about. If you or your company benefit from my open source work, or if you simply want to show your support, please consider <a href="https://buymeacoff.ee/rinaldi">buying me a coffee</a>.</p>
+          function handleVisibilityChange() {
+            var isVisible = !document[hidden]
+            var action = isVisible ? 'add' : 'remove'
 
-    <p class="hidden">I’m available for part&#x2011;time freelance work. Project&#x2011;based; mentorship or consultancy opportunities.<br />Technology I use the most these days include <a href="https://reactjs.org" target="_blank">React</a> and <a href="https://facebook.github.io/react-native" target="_blank">React Native</a>, <a href="https://www.typescriptlang.org" target="_blank">TypeScript</a>, <a href="https://graphql.org" target="_blank">GraphQL</a>, <a href="https://nodejs.org" target="_blank">Node.js</a> and the <a href="https://aws.amazon.com" target="_blank">AWS cloud platform</a>.</p>
+            function callback() {
+              heading.classList[action]('heading-in')
+            }
 
-    <p>You can find me on <a href="https://github.com/rafaelrinaldi" target="_blank">GitHub</a>, <a href="https://twitter.com/rafaelrinaldi" target="_blank">Twitter</a> and <a href="https://linkedin.com/in/rafaelrinaldi" target="_blank">LinkedIn</a>.</p>
+            if (hidden.startsWith('webkit')) return setTimeout(callback)
 
-    <p class="hidden"><a href="mailto:{emailSecret}">Get in touch</a>.</p>
+            callback()
+          }
 
-    <script>{loadFonts}</script>
+          function handleDOMContentLoad() {
+            requestAnimationFrame(function () {
+              heading.classList.add('heading-in')
+            })
+          }
 
-    <script>
-     (function () {
-       var hidden = [].slice.call(document.querySelectorAll('.hidden'))
-       var toggleContentButton = document.querySelector('[data-toggle-content]')
+          document.addEventListener(visibilityChange, handleVisibilityChange)
+          document.addEventListener('DOMContentLoaded', handleDOMContentLoad, { once: true })
 
-       function toggleContent (target) {
-         var toggleState = target.getAttribute('aria-pressed')
-         var isTogglePressed = toggleState === 'true'
-         var text = {
-           false: '&lsqb;&plus;&rsqb;',
-           true: '&lsqb;&minus;&rsqb;'
-         }
+          var font = new FontFaceObserver('SpaceGrotesk')
+          font.load().then(function () {
+            document.body.classList.add('font-loaded')
+          })
 
-         hidden.map(function (item) {
-           item.classList.toggle('hidden')
-         })
-
-         target.setAttribute('aria-pressed', !isTogglePressed)
-         target.innerHTML = text[!isTogglePressed]
-       }
-
-       document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
-         this.href = 'mailto:{email}'
-       }, { once: true })
-
-       toggleContentButton.addEventListener('click', function (event) {
-         toggleContent(event.currentTarget)
-       })
-
-       var font = new FontFaceObserver('T4c')
-       font.load().then(function () {
-         document.body.classList.add('font-loaded')
-       })
-     })()
-    </script>
+          document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
+            this.href = 'mailto:{email}'
+          }, { once: true })
+        })()
+      </script>
   </body>
 </html>
