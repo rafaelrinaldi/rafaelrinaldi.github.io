@@ -7,6 +7,7 @@
   })
 
   var root = document.documentElement
+  var theme = document.querySelector('[data-theme]')
 
   var colorModes = {
     light: {
@@ -32,8 +33,11 @@
     return localStorage.getItem(key) !== null
   }
 
+  function guessDarkMode () {
+    return theme.dataset.theme === 'dark'
+  }
+
   var hasColorModePreference = has(colorModeKey)
-  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
   function setColorMode (isDarkMode) {
     var nextColorMode = isDarkMode ? 'light' : 'dark'
@@ -46,14 +50,14 @@
   }
 
   function toggleColorMode () {
-    var isDarkMode = get(colorModeKey)
+    var isDarkMode = has(colorModeKey) ? get(colorModeKey) : guessDarkMode()
     setColorMode(!isDarkMode)
   }
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addListener(function (event) {
-      setColorMode(event.matches)
+      if (!hasColorModePreference) setColorMode(event.matches)
     })
 
   var colorMode = document.querySelector('[data-color-mode]')
@@ -63,6 +67,7 @@
     var colorModePreference = get(colorModeKey)
     setColorMode(colorModePreference)
   } else {
+    var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
     set(colorModeKey, isDarkMode)
   }
 })()
