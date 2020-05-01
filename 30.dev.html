@@ -10,10 +10,6 @@
     <link href="styles.css" rel="stylesheet" />
 
     <style>
-    header {
-      padding: 1rem 0;
-    }
-
     h1 {
       font-size: calc(42px + 1.5vw);
       line-height: 0.85;
@@ -21,7 +17,7 @@
     }
 
     article {
-      padding: 5rem 3rem;
+      padding: 3rem;
     }
 
     time {
@@ -31,7 +27,7 @@
 
     .color-mode {
       position: fixed;
-      bottom: 3rem;
+      top: 3rem;
       right: 3rem;
       transform: scale(0.5);
       transition: transform 1s cubic-bezier(0.000, 0.955, 0.355, 1.000);
@@ -48,9 +44,17 @@
     }
 
     @media screen and (min-width: 64em) {
-      article { max-width: 40% }
-    }
+      article {
+        max-width: 40%;
+        padding: 5rem 3rem;
+      }
 
+      header { padding: 1rem 0 }
+      .color-mode {
+        top: unset;
+        bottom: 3rem;
+      }
+    }
     </style>
   </head>
 
@@ -95,38 +99,44 @@
 
       var root = document.documentElement
 
-      var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-      localStorage.setItem('isDarkMode', isDarkMode)
-
       var colorModes = {
-        dark: {
+        light: {
           primary: '#fff',
           secondary: '#0a0a0a'
         },
 
-        light: {
+        dark: {
           primary: '#0a0a0a',
           secondary: '#fff'
         }
       }
 
-      function toggleColorMode() {
-        var isDarkMode = JSON.parse(localStorage.getItem('isDarkMode'))
+      var isDarkMode = JSON.parse(localStorage.getItem('isDarkMode')) || window.matchMedia('(prefers-color-scheme: dark)').matches
+
+      function setColorMode(isDarkMode) {
+        console.log('setColorMode', isDarkMode)
         var nextColorMode = isDarkMode ? 'light' : 'dark'
         var colorMode = colorModes[nextColorMode]
 
-        localStorage.setItem('isDarkMode', !isDarkMode)
+        localStorage.setItem('isDarkMode', isDarkMode)
 
         root.style.setProperty('--color-primary', colorMode.primary)
         root.style.setProperty('--color-secondary', colorMode.secondary)
       }
 
+      function toggleColorMode() {
+        var isDarkMode = JSON.parse(localStorage.getItem('isDarkMode'))
+        setColorMode(!isDarkMode)
+      }
+
       window.matchMedia('(prefers-color-scheme: dark)').addListener(function (event) {
-        localStorage.setItem('isDarkMode', event.matches)
+        setColorMode(event.matches)
       });
 
       var colorMode = document.querySelector('[data-color-mode]')
       colorMode.addEventListener('click', toggleColorMode)
+
+      setColorMode(isDarkMode)
     </script>
   </body>
 </html>
