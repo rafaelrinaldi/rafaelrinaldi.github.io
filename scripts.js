@@ -35,9 +35,6 @@
   var hasColorModePreference = has(colorModeKey)
   var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-  console.log('hasColorModePreference', hasColorModePreference)
-  console.log('isDarkMode', isDarkMode)
-
   function setColorMode (isDarkMode) {
     var nextColorMode = isDarkMode ? 'light' : 'dark'
     var colorMode = colorModes[nextColorMode]
