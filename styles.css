@@ -149,7 +149,7 @@ button {
 
   .color-mode {
     top: unset;
-    bottom: var(--content-spacing-y-comfortable);
+    bottom: var(--content-spacing-x-comfortable);
     right: var(--content-spacing-x-comfortable);
   }
 }
