@@ -3,11 +3,6 @@
   --color-secondary: #fff;
 }
 
-/* *:not(a) { */
-/*   transition: color .35s linear; */
-/*   will-change: color; */
-/* } */
-
 @font-face {
   font-family: 'SpaceGrotesk';
   src: url('SpaceGrotesk.woff2') format('woff2');
@@ -29,17 +24,20 @@
   color: var(--color-secondary);
 }
 
-html { font-size: calc(16px + .85vw) }
+html {
+  font-size: calc(16px + 0.85vw);
+}
 
-html, body {
+html,
+body {
   margin: 0;
   max-width: 100%;
   color: var(--color-primary);
-  transition: color .35s linear;
+  transition: color 0.35s linear;
 }
 
 body {
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   background-color: var(--color-secondary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -52,11 +50,13 @@ p {
   word-break: break-word;
 }
 
-p:not(:last-of-type) { margin-bottom: 1.25rem }
+p:not(:last-of-type) {
+  margin-bottom: 1.25rem;
+}
 
 a,
 abbr {
-  color: var(--color-primary);
+  color: currentColor;
   text-decoration: none !important;
   display: inline-block;
   position: relative;
@@ -75,8 +75,12 @@ abbr::after {
   border-bottom-width: 2px;
 }
 
-a:not(.logo):not(:hover)::after { border-bottom-style: solid }
-abbr::after { border-bottom-style: dotted }
+a:not(.logo):not(:hover)::after {
+  border-bottom-style: solid;
+}
+abbr::after {
+  border-bottom-style: dotted;
+}
 
 a:not(.logo):hover {
   color: var(--color-secondary);
@@ -89,7 +93,9 @@ button {
   outline: none;
 }
 
-.flex { display: flex }
+.flex {
+  display: flex;
+}
 
 .hidden {
   border: 0;
@@ -104,12 +110,41 @@ button {
   word-wrap: normal;
 }
 
-.font-loaded { font-family: "SpaceGrotesk", "Helvetica Neue", sans-serif }
+.font-loaded {
+  font-family: 'SpaceGrotesk', 'Helvetica Neue', sans-serif;
+}
+
+.color-mode {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  transform: scale(0.5);
+  transition: transform 1s cubic-bezier(0, 0.955, 0.355, 1);
+}
+
+.color-mode:hover {
+  transform: scale(1.5);
+  transition-duration: 0.2s;
+}
+
+@media screen and (min-width: 64em) {
+  .color-mode {
+    top: unset;
+    bottom: 3rem;
+  }
+}
 
 @media screen and (min-width: 90em) {
-  html, body { overflow: hidden }
-  html { font-size: calc(16px + 0.5vw) }
-  p:not(:last-of-type) { margin-bottom: 1.65rem }
+  html,
+  body {
+    overflow: hidden;
+  }
+  html {
+    font-size: calc(16px + 0.5vw);
+  }
+  p:not(:last-of-type) {
+    margin-bottom: 1.65rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
