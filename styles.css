@@ -1,0 +1,114 @@
+:root {
+  --color-primary: #0a0a0a;
+  --color-secondary: #fff;
+}
+
+*:not(a) { transition: color .35s linear }
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('SpaceGrotesk.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('SpaceGrotesk-Bold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+html { font-size: calc(16px + .85vw) }
+
+html, body {
+  margin: 0;
+  max-width: 100%;
+  color: var(--color-primary);
+}
+
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: var(--color-secondary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+}
+
+p {
+  line-height: 1.45;
+  word-break: break-word;
+  margin-bottom: 1.25rem;
+}
+
+a,
+abbr {
+  color: var(--color-primary);
+  text-decoration: none !important;
+  display: inline-block;
+  position: relative;
+}
+
+a:not(:hover)::after,
+abbr::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  transform: translateY(-3px);
+  border-bottom-color: currentColor;
+  border-bottom-width: 2px;
+}
+
+a:not(.logo):not(:hover)::after { border-bottom-style: solid }
+abbr::after { border-bottom-style: dotted }
+
+a:not(.logo):hover {
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+}
+
+button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.flex { display: flex }
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.font-loaded { font-family: "SpaceGrotesk", "Helvetica Neue", sans-serif }
+
+@media screen and (min-width: 90em) {
+  html, body { overflow: hidden }
+  html { font-size: calc(16px + 0.5vw) }
+  p { margin-bottom: 1.65rem }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #fff;
+    --color-secondary: #0a0a0a;
+  }
+}
