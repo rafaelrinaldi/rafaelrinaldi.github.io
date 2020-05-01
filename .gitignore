@@ -2,5 +2,6 @@
 node_modules
 package-lock.json
 *.css
-index.html
+*.html
+!*.dev.html
 cv.html

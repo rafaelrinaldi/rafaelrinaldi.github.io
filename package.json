@@ -1,11 +1,11 @@
 {
   "private": true,
   "scripts": {
-    "build": "sh build.sh && sh build-cv.sh"
+    "build": "sh build.sh"
   },
   "devDependencies": {
     "html-meta-tags": "^1.1.0",
     "html-minifier": "^4.0.0",
-    "replace": "^1.1.5"
+    "replace": "^1.2.0"
   }
 }
