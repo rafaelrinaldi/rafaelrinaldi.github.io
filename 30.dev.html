@@ -23,7 +23,7 @@
       }
 
       article {
-        padding: 3rem;
+        padding: var(--content-spacing-y) var(--content-spacing-x);
       }
 
       time {
@@ -36,19 +36,14 @@
         margin-bottom: 2.5rem;
       }
 
-      @media screen and (min-width: 64em) {
+      @media screen and (min-width: 90em) {
         article {
           max-width: 40%;
-          padding: 5rem 3rem;
+          padding: var(--content-spacing-y-comfortable) var(--content-spacing-x-comfortable);
         }
 
         header {
           padding: 1rem 0;
-        }
-
-        .color-mode {
-          top: unset;
-          bottom: 3rem;
         }
       }
     </style>

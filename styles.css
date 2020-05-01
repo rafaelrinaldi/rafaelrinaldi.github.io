@@ -1,6 +1,10 @@
 :root {
   --color-primary: #0a0a0a;
   --color-secondary: #fff;
+  --content-spacing-x: 1rem;
+  --content-spacing-y: 2rem;
+  --content-spacing-x-comfortable: 3rem;
+  --content-spacing-y-comfortable: 5rem;
 }
 
 @font-face {
@@ -115,23 +119,16 @@ button {
 }
 
 .color-mode {
-  position: fixed;
-  top: 3rem;
-  right: 3rem;
-  transform: scale(0.5);
+  position: absolute;
+  top: var(--content-spacing-y);
+  right: var(--content-spacing-x);
+  transform: scale(0.6);
   transition: transform 1s cubic-bezier(0, 0.955, 0.355, 1);
 }
 
 .color-mode:hover {
-  transform: scale(1.5);
+  transform: scale(1.75);
   transition-duration: 0.2s;
-}
-
-@media screen and (min-width: 64em) {
-  .color-mode {
-    top: unset;
-    bottom: 3rem;
-  }
 }
 
 @media screen and (min-width: 90em) {
@@ -139,11 +136,19 @@ button {
   body {
     overflow: hidden;
   }
+
   html {
     font-size: calc(16px + 0.5vw);
   }
+
   p:not(:last-of-type) {
     margin-bottom: 1.65rem;
+  }
+
+  .color-mode {
+    top: unset;
+    bottom: var(--content-spacing-y-comfortable);
+    right: var(--content-spacing-x-comfortable);
   }
 }
 
