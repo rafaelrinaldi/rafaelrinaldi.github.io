@@ -20,6 +20,7 @@ do
   echo "Replacing variables..."
   replace --silent "{metatags}" "$metatags" $tempfile
   replace --silent "{loadFonts}" "$loadFonts" $tempfile
+  replace --silent "{phone}" "${PHONE:-}" $tempfile
   replace --silent "{email}" "${EMAIL:-}" $tempfile
   replace --silent "{emailSecret}" "$emailSecret" $tempfile
 
