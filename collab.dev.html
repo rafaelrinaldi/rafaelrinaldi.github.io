@@ -102,7 +102,7 @@
         </ul>
 
         <p>
-          If you think you or your team could benefit from us collaborating together, <a href="mailto:{emailSecret}?subject=Collab">please send me an email</a>.
+          If you think you or your team could benefit from us collaborating together, <a href="mailto:{emailSecret}">please send me an email</a>.
         </p>
 
         <p>
@@ -119,7 +119,7 @@
     <script>
       ;(function () {
         document.querySelector('a[href^=mailto]').addEventListener('mouseover', function () {
-          this.href = 'mailto:{email}'
+          this.href = 'mailto:{email}?subject=Collab'
         }, { once: true })
       })()
     </script>
