@@ -99,6 +99,29 @@ button {
   outline: none;
 }
 
+small,
+sup {
+  font-size: 60%;
+}
+
+sup {
+  cursor: default;
+}
+
+footer {
+  color: #666;
+  font-size: 50%;
+}
+
+ul {
+  margin: var(--content-spacing-y) 0;
+  padding-left: var(--content-spacing-x);
+}
+
+li:not(:last-of-type) {
+  margin-bottom: 0.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -121,7 +144,7 @@ button {
 }
 
 .color-mode {
-  position: absolute;
+  position: fixed;
   top: var(--content-spacing-y);
   right: var(--content-spacing-x);
   transform: scale(0.6);
@@ -134,13 +157,8 @@ button {
 }
 
 @media screen and (min-width: 90em) {
-  html,
-  body {
-    overflow: hidden;
-  }
-
   html {
-    font-size: calc(16px + 0.5vw);
+    font-size: calc(16px + 0.4vw);
   }
 
   p:not(:last-of-type) {
@@ -151,6 +169,10 @@ button {
     top: unset;
     bottom: var(--content-spacing-x-comfortable);
     right: var(--content-spacing-x-comfortable);
+  }
+
+  .spotlight {
+    font-size: 115%;
   }
 }
 
