@@ -99,15 +99,6 @@ button {
   outline: none;
 }
 
-small,
-sup {
-  font-size: 60%;
-}
-
-sup {
-  cursor: default;
-}
-
 footer {
   color: #666;
   font-size: 50%;
