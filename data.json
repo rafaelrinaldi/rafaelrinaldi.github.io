@@ -78,7 +78,7 @@
     "description": "Rafael Rinaldi is a Software Engineer with a passion for finding simple solutions to interesting problems.",
     "site": "@rafaelrinaldi",
     "card": "summary_large_image",
-    "image": "./rr.png"
+    "image": "https://rinaldi.io/rr.png"
   },
   "og": {
     "locale": "en_US"
