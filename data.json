@@ -81,6 +81,8 @@
     "image": "https://rinaldi.io/rr.png"
   },
   "og": {
-    "locale": "en_US"
+    "locale": "en_US",
+    "image": "https://rinaldi.io/rr.png",
+    "image:secure_url": "https://rinaldi.io/rr.png"
   }
 }
