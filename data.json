@@ -3,13 +3,11 @@
   "url": "https://rinaldi.io",
   "title": "Rafael Rinaldi",
   "keywords": [
+    "Better Mortgage",
     "Better",
     "Better.com",
-    "Better Mortgage",
     "Brooklyn",
     "DUMBO",
-    "design system",
-    "design systems",
     "Grafikonstruct",
     "IED",
     "Istituto Europeo di Design",
@@ -29,6 +27,8 @@
     "clojurescript",
     "components",
     "css",
+    "design system",
+    "design systems",
     "design",
     "developer",
     "distributed computing",
@@ -36,6 +36,7 @@
     "es2015",
     "es6",
     "favourite website awards",
+    "figma",
     "financial technology",
     "fintech",
     "flux",
@@ -73,7 +74,11 @@
     "initial-scale=1"
   ],
   "twitter": {
-    "site": "@rafaelrinaldi"
+    "title": "Rafael Rinaldi",
+    "description": "Rafael Rinaldi is a Software Engineer with a passion for finding simple solutions to interesting problems.",
+    "site": "@rafaelrinaldi",
+    "card": "summary_large_image",
+    "image": "https://rinaldi.io/rr.png"
   },
   "og": {
     "locale": "en_US"

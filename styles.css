@@ -9,14 +9,12 @@
 
 @font-face {
   font-family: 'SpaceGrotesk';
-  src: url('SpaceGrotesk.woff2') format('woff2'),
-    url('SpaceGrotesk.woff') format('woff');
+  src: url('SpaceGrotesk.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'SpaceGrotesk';
-  src: url('SpaceGrotesk-Bold.woff2') format('woff2'),
-    url('SpaceGrotesk-Bold.woff') format('woff');
+  src: url('SpaceGrotesk-Bold.woff2') format('woff2');
   font-weight: bold;
 }
 

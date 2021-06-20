@@ -56,7 +56,7 @@
 
   window
     .matchMedia('(prefers-color-scheme: dark)')
-    .addListener(function (event) {
+    .addEventListener('change', function (event) {
       if (!hasColorModePreference) setColorMode(event.matches)
     })
 
